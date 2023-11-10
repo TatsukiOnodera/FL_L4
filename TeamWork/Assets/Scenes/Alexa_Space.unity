@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 424493645}
   - component: {fileID: 424493644}
   - component: {fileID: 424493643}
-  - component: {fileID: 424493647}
+  - component: {fileID: 424493648}
   m_Layer: 0
   m_Name: MikeVolume
   m_TagString: Untagged
@@ -229,7 +229,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &424493647
+--- !u!114 &424493648
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -238,13 +238,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 424493642}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4495b4f36970ef345a20a6d0a76f58b8, type: 3}
+  m_Script: {fileID: 11500000, guid: 357544cab81c72d4bbd4da69635b0f76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_DeviceName: Realtek(R) Audio
-  m_Cube: {fileID: 424493642}
-  m_lowest: 10
-  m_AmpGain: 10
+  m_player: {fileID: 424493642}
+  isBig: 0
 --- !u!1 &691724270
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,7 +329,7 @@ Transform:
   m_GameObject: {fileID: 691724270}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
