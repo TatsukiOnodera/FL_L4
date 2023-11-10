@@ -2,18 +2,27 @@ using System;
 using System.Linq;
 using UnityEngine;
 
-public class Controller : MonoBehaviour
+public class Mike : MonoBehaviour
 {
-
+    // デバイス名
     [SerializeField] private string m_DeviceName;
+    // オーディオクリップ
     private AudioClip m_AudioClip;
+    // 最終点
     private int m_LastAudioPos;
+    // レベル
     private float m_AudioLevel;
 
-    [SerializeField] private GameObject m_Cube;
-    [SerializeField, Range(0, 10)] private float m_lowest = 10;
-    [SerializeField, Range(10, 100)] private float m_AmpGain = 10;
+    // 切り捨て値
+    [SerializeField, Range(0, 10)] private float m_lowest;
+    // ゲイン
+    [SerializeField, Range(10, 100)] private float m_AmpGain;
+    // ボリューム
+    private float m_volume = 0;
 
+    /// <summary>
+    /// 初期化
+    /// </summary>
     void Start()
     {
         string targetDevice = "";
@@ -31,8 +40,14 @@ public class Controller : MonoBehaviour
         m_AudioClip = Microphone.Start(targetDevice, true, 10, 48000);
     }
 
+    /// <summary>
+    /// 更新
+    /// </summary>
     void Update()
     {
+        Fever fever = GetComponent<Fever>();
+        if (fever.GetIsBig() == false) return;
+
         float[] waveData = GetUpdatedAudio();
         if (waveData.Length == 0) return;
 
@@ -42,9 +57,14 @@ public class Controller : MonoBehaviour
         {
             vol = 0;
         }
-        m_Cube.transform.localScale = new Vector3(1, 1 + vol, 1);
+
+        m_volume = vol;
     }
 
+    /// <summary>
+    /// オーディオの更新した値を取得
+    /// </summary>
+    /// <returns>float</returns>
     private float[] GetUpdatedAudio()
     {
 
@@ -80,5 +100,14 @@ public class Controller : MonoBehaviour
         m_LastAudioPos = nowAudioPos;
 
         return waveData;
+    }
+
+    /// <summary>
+    /// ボリュームを取得
+    /// </summary>
+    /// <returns>float</returns>
+    public float GetVolume()
+    {
+        return m_volume;
     }
 }
