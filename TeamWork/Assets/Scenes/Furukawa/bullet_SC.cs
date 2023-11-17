@@ -5,6 +5,7 @@ using UnityEngine;
 public class bullet_SC : MonoBehaviour
 {
     int count = 0;
+    float speed = 0.02f;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +18,7 @@ public class bullet_SC : MonoBehaviour
     {
         Vector3 pos = transform.position;
 
-        pos.x += 0.07f;
+        pos += transform.rotation.eulerAngles * speed;
 
         transform.position = new Vector3(pos.x, pos.y, pos.z);
 

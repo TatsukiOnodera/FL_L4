@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class player_SC : MonoBehaviour
 {
-    public float speed = 0f;   // 横に移動する速度
-    public float jumpP = 300f; // ジャンプ力
-    public Vector3 vec = new Vector3();
-    public int maxJumpCount = 0;
+    public float speed = 0.01f;   // 横に移動する速度
+    public float jumpP = 2000f; // ジャンプ力
+    public int maxJumpCount = 1;
 
     Rigidbody rbody; // リジッドボディを使うための宣言
     Vector3 position;
@@ -26,7 +25,14 @@ public class player_SC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector3 diff = transform.position - position;
         position = transform.position;
+
+        if (diff.magnitude > 0.01f)
+        {
+            diff = diff.normalized;
+            transform.rotation = Quaternion.LookRotation(diff);
+        }
 
         // ジャンプをするためのコード（もしスペースキーが押されて、上方向に速度がない時に）
         if (Input.GetKey(KeyCode.A))
@@ -52,12 +58,11 @@ public class player_SC : MonoBehaviour
 
         position.z = 0.0f;
         transform.position = position;
-        vec = rbody.velocity;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.CompareTag("floor"))
+        if (collision.gameObject.CompareTag("floor"))
         {
             jumpCount = 0;
         }
