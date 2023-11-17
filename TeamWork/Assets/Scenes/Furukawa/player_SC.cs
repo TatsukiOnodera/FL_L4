@@ -10,6 +10,7 @@ public class player_SC : MonoBehaviour
 
     Rigidbody rbody; // リジッドボディを使うための宣言
     Vector3 position;
+    Vector3 rotation;
 
     int jumpCount;
 
@@ -19,20 +20,15 @@ public class player_SC : MonoBehaviour
         // リジッドボディ2Dをコンポーネントから取得して変数に入れる
         rbody = GetComponent<Rigidbody>();
         position = transform.position;
+        transform.rotation = Quaternion.identity;
+        rotation = new Vector3(0, 90, 0);
         jumpCount = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 diff = transform.position - position;
         position = transform.position;
-
-        if (diff.magnitude > 0.01f)
-        {
-            diff = diff.normalized;
-            transform.rotation = Quaternion.LookRotation(diff);
-        }
 
         // ジャンプをするためのコード（もしスペースキーが押されて、上方向に速度がない時に）
         if (Input.GetKey(KeyCode.A))
@@ -40,6 +36,7 @@ public class player_SC : MonoBehaviour
             // リジッドボディに力を加える（上方向にジャンプ力をかける）
             rbody.AddForce(new Vector3(-1, 0, 0) * speed);
             position.x -= speed;
+            rotation = new Vector3(0, -90, 0);
         }
 
         if (Input.GetKey(KeyCode.D))
@@ -47,6 +44,7 @@ public class player_SC : MonoBehaviour
             // リジッドボディに力を加える（上方向にジャンプ力をかける）
             rbody.AddForce(new Vector3(1, 0, 0) * speed);
             position.x += speed;
+            rotation = new Vector3(0, 90, 0);
         }
 
         if (Input.GetKeyDown(KeyCode.W) && jumpCount < maxJumpCount)
@@ -58,6 +56,7 @@ public class player_SC : MonoBehaviour
 
         position.z = 0.0f;
         transform.position = position;
+        transform.rotation = Quaternion.Euler(rotation);
     }
 
     private void OnCollisionEnter(Collision collision)

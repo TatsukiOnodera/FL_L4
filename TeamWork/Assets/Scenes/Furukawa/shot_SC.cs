@@ -20,9 +20,10 @@ public class shot_SC : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Vector3 pos = transform.position;
-            Quaternion rot = transform.rotation;
+            Vector3 rot = transform.rotation.eulerAngles;
+            rot = new Vector3(rot.y, rot.x, rot.z);
             pos.x += 1.0f;
-            Instantiate(bullet, pos, rot);
+            Instantiate(bullet, pos, Quaternion.Euler(rot));
         }
     }
 }
