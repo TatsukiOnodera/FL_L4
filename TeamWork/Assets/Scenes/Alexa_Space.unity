@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 424493648}
   - component: {fileID: 424493649}
   m_Layer: 0
-  m_Name: MikeVolume
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -243,8 +243,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_player: {fileID: 424493642}
-  m_isBig: 0
-  m_limit: 800
+  m_limitBigTime: 2000
+  m_limitFeverGauge: 1
 --- !u!114 &424493649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,7 +258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_DeviceName: Realtek(R) Audio
-  m_lowest: 0
+  m_lowestVolume: 0
   m_AmpGain: 55
 --- !u!1 &691724270
 GameObject:

@@ -14,7 +14,7 @@ public class Mike : MonoBehaviour
     private float m_AudioLevel;
 
     // 切り捨て値
-    [SerializeField, Range(0, 10)] private float m_lowest;
+    [SerializeField, Range(0, 10)] private float m_lowestVolume;
     // ゲイン
     [SerializeField, Range(10, 100)] private float m_AmpGain;
     // ボリューム
@@ -53,7 +53,7 @@ public class Mike : MonoBehaviour
 
         m_AudioLevel = waveData.Average(Mathf.Abs);
         float vol = m_AmpGain * m_AudioLevel;
-        if (vol < m_lowest)
+        if (vol < m_lowestVolume)
         {
             vol = 0;
         }
