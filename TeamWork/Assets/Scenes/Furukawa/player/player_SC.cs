@@ -14,6 +14,8 @@ public class player_SC : MonoBehaviour
 
     int jumpCount;
 
+    int HP;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +25,7 @@ public class player_SC : MonoBehaviour
         transform.rotation = Quaternion.identity;
         rotation = new Vector3(0, 90, 0);
         jumpCount = 0;
+        HP = 3;
     }
 
     // Update is called once per frame
@@ -64,6 +67,15 @@ public class player_SC : MonoBehaviour
         if (collision.gameObject.CompareTag("floor"))
         {
             jumpCount = 0;
+        }
+    }
+
+    public void damage()
+    {
+        HP--;
+        if (HP < 0)
+        {
+            Destroy(this.gameObject);
         }
     }
 }
