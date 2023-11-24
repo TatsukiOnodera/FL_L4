@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - floor
+  - bullet
+  - enemy
+  - player
   layers:
   - Default
   - TransparentFX
