@@ -2,30 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class bullet_SC : MonoBehaviour
+public class enemy_SC : MonoBehaviour
 {
-    int count = 0;
+    private int enemyHP;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        enemyHP = 3;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 pos = transform.position;
-
-        pos.x += 0.07f;
-
-        transform.position = new Vector3(pos.x, pos.y, pos.z);
-
-        count++;
-
-        if (count >= 60)
+        if (enemyHP == 0)
         {
             Destroy(this.gameObject);
         }
+    }
+
+    public void damage()
+    {
+        enemyHP -= 1;
     }
 }

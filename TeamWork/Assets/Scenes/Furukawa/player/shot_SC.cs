@@ -6,6 +6,8 @@ public class shot_SC : MonoBehaviour
 {
     public GameObject bullet;
 
+    Quaternion rot;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,8 +20,9 @@ public class shot_SC : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Vector3 pos = transform.position;
-            pos.x += 1.0f;
-            Instantiate(bullet, pos, Quaternion.identity);
+            Vector3 rot = transform.rotation.eulerAngles;
+            rot = new Vector3(rot.y, rot.x, rot.z);
+            Instantiate(bullet, pos, Quaternion.Euler(rot));
         }
     }
 }
