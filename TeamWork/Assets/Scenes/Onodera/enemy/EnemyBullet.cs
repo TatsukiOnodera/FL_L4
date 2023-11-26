@@ -6,7 +6,7 @@ public class EnemyBullet : MonoBehaviour
 {
     int count = 0;
     float speed = 0.009f;
-    public Vector3 vec = Vector3.zero;
+    private Vector3 vec = Vector3.zero;
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +40,7 @@ public class EnemyBullet : MonoBehaviour
     {
         if (other.gameObject.tag == "player")
         {
-            other.GetComponent<player_SC>().damage();
+            other.GetComponent<Player>().Damage();
             Destroy(this.gameObject);
         }
     }

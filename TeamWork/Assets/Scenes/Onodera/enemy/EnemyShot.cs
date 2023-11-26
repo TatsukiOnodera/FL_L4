@@ -6,7 +6,7 @@ public class EnemyShot : MonoBehaviour
 {
     public GameObject bullet;
 
-    private GameObject player;
+    public GameObject player;
 
     int count = 0;
     const int shotTiming = 800;
@@ -41,7 +41,7 @@ public class EnemyShot : MonoBehaviour
         rot = new Vector3(rot.y, rot.x, rot.z);
         Instantiate(bullet, pos, Quaternion.Euler(rot));
 
-        var bulletobject = bullet.GetComponent<bullet_E_SC>();
+        var bulletobject = bullet.GetComponent<EnemyBullet>();
 
         Vector3 direction = player.transform.position - transform.position;
 

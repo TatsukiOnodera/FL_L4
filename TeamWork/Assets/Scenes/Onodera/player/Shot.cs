@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Shot : MonoBehaviour
 {
-    public GameObject bullet;
-
-    Quaternion rot;
+   // 弾のコンポーネント
+    [SerializeField] private GameObject bullet;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +21,7 @@ public class Shot : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            fever.UpFeverGauge();
             Vector3 pos = transform.position;
             pos.x += 0.5f * transform.localScale.x + 0.5f * bullet.transform.localScale.x;
             Vector3 rot = transform.rotation.eulerAngles;

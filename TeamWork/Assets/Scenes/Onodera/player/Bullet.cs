@@ -39,8 +39,11 @@ public class Bullet : MonoBehaviour
     {
         if (other.gameObject.tag == "enemy")
         {
-            other.GetComponent<enemy_SC>().damage();
+            other.GetComponent<Enemy>().damage();
             Destroy(this.gameObject);
+            GameObject obj = GameObject.Find("Player");
+            FeverTime fever = obj.GetComponent<FeverTime>();
+            fever.UpFeverGauge();
         }
     }
 }

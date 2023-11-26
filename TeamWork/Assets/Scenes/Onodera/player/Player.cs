@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -22,9 +23,6 @@ public class Player : MonoBehaviour
     // HP
     [SerializeField] private int HP = 0;
 
-    // 生死フラグ
-    private bool isAlive = false;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +34,6 @@ public class Player : MonoBehaviour
 
         // 初期化
         jumpCount = 0;
-        isAlive = true;
     }
 
     // Update is called once per frame
@@ -88,12 +85,15 @@ public class Player : MonoBehaviour
     /// <summary>
     /// ダメージ処理
     /// </summary>
-    public void damage()
+    public void Damage()
     {
+        FeverTime fever = GetComponent<FeverTime>();
+        fever.UpFeverGauge();
         HP--;
         if (HP < 0)
         {
             Destroy(this.gameObject);
+            SceneManager.LoadScene("GameOver");
         }
     }
 
@@ -112,6 +112,13 @@ public class Player : MonoBehaviour
     /// <returns>bool</returns>
     public bool GetIsAlive()
     {
-        return isAlive;
+        if (0 < HP)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

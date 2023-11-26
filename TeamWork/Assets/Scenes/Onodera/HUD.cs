@@ -6,38 +6,45 @@ using UnityEngine.SceneManagement;
 public class HUD : MonoBehaviour
 {
     /*メンバ変数*/
-    // HUDのオブジェクト
-    [SerializeField] private RectTransform meter;
+    // HPのHUD
+    [SerializeField] private RectTransform HPGauge;
+    // フィーバーゲージのHUD
+    [SerializeField] private RectTransform FeverGauge;
 
     // プレイヤーのコンポーネント
-    private player_SC m_player;
+    private Player m_player;
 
-    // プレイヤーのHP
-    public int m_HP = 0;
+    // フィーバーゲージのコンポーネント
+    private FeverTime m_feverTime;
+
+    // プレイヤーの最大HP
+    public int m_maxHP = 0;
 
     // HUDの横幅
     public float m_width = 0;
+
+    public int nowHP = 0;
+
+    public float nowFever = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         GameObject obj = GameObject.Find("Player");
-        m_player = obj.GetComponent<player_SC>();
-        m_HP = m_player.GetHP();
-        m_width = meter.rect.width;
+        m_player = obj.GetComponent<Player>();
+        m_feverTime = obj.GetComponent<FeverTime>();
+
+        m_maxHP = m_player.GetHP();
+        m_width = HPGauge.rect.width;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (m_player.GetIsAlive() == false)
-        {
-            SceneManager.LoadScene("GameOver");
-        }
-        else
-        {
-            int nowHP = m_player.GetHP();
-            meter.sizeDelta = new Vector2(m_width * (float)m_HP / nowHP, meter.rect.height);
-        }
+        nowHP = m_player.GetHP();
+        HPGauge.sizeDelta = new Vector2(m_width * (float)m_maxHP / nowHP, HPGauge.rect.height);
+
+        nowFever = m_feverTime.GetFeverGauge();
+        FeverGauge.sizeDelta = new Vector2(m_width / nowFever, FeverGauge.rect.height);
     }
 }
