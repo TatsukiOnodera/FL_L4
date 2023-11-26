@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
-    int count = 0;
-    float speed = 0.009f;
-    private Vector3 vec = Vector3.zero;
+    private int count = 0;
+    [SerializeField] private float speed = 0.009f;
+    [SerializeField] private Vector3 vec = Vector3.zero;
 
     // Start is called before the first frame update
     void Start()

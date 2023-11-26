@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: localGravity.y
       value: -30
       objectReference: {fileID: 0}
+    - target: {fileID: -1814776484464701301, guid: be59aa39f49acf143acf3dbb27ee8641, type: 3}
+      propertyPath: enemyHP
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 512357518483212499, guid: be59aa39f49acf143acf3dbb27ee8641, type: 3}
       propertyPath: m_Name
       value: Enemy_02
@@ -197,7 +201,7 @@ GameObject:
   - component: {fileID: 247430784}
   - component: {fileID: 247430783}
   m_Layer: 0
-  m_Name: floor
+  m_Name: Floor
   m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -63,6 +63,7 @@ public class FeverTime : MonoBehaviour
         if (m_limitFeverGauge <= m_feverGauge)
         {
             m_feverGauge = m_limitFeverGauge;
+            m_player.transform.Translate(0, 2.5f, 0);
         }
     }
 
@@ -74,15 +75,6 @@ public class FeverTime : MonoBehaviour
         // フィーバーゲージがたまっていないか
         if (m_feverGauge < m_limitFeverGauge)
         {
-            // スペースキーを押しているか
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                if (m_limitFeverGauge <= m_feverGauge)
-                {
-                    m_player.transform.Translate(0, 5.0f, 0);
-                }
-            }
-
             m_player.transform.localScale = new Vector3(1, 1, 1);
             return false;
         }

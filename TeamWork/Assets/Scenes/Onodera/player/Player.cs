@@ -90,7 +90,7 @@ public class Player : MonoBehaviour
         FeverTime fever = GetComponent<FeverTime>();
         fever.UpFeverGauge();
         HP--;
-        if (HP < 0)
+        if (HP <= 0)
         {
             Destroy(this.gameObject);
             SceneManager.LoadScene("GameOver");

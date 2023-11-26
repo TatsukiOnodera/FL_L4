@@ -42,7 +42,7 @@ public class HUD : MonoBehaviour
     void Update()
     {
         nowHP = m_player.GetHP();
-        HPGauge.sizeDelta = new Vector2(m_width * (float)m_maxHP / nowHP, HPGauge.rect.height);
+        HPGauge.sizeDelta = new Vector2((m_width / (float)m_maxHP) * nowHP, HPGauge.rect.height);
 
         nowFever = m_feverTime.GetFeverGauge();
         FeverGauge.sizeDelta = new Vector2(m_width / nowFever, FeverGauge.rect.height);

@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    private int enemyHP;
+    [SerializeField] private int enemyHP = 3;
 
     // Start is called before the first frame update
     void Start()
     {
-        enemyHP = 3;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (enemyHP == 0)
+        if (enemyHP <= 0)
         {
             Destroy(this.gameObject);
         }

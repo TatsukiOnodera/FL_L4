@@ -8,8 +8,8 @@ public class EnemyShot : MonoBehaviour
 
     public GameObject player;
 
-    int count = 0;
-    const int shotTiming = 800;
+    private int count = 0;
+    [SerializeField] private int shotTiming = 800;
 
     // Start is called before the first frame update
     void Start()
