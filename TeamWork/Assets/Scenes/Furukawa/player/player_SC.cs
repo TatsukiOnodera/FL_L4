@@ -12,10 +12,13 @@ public class player_SC : MonoBehaviour
     Vector3 position;
     Vector3 rotation;
 
+    private Animator animator;
+
     int jumpCount;
 
     int HP;
 
+    private bool move = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +26,7 @@ public class player_SC : MonoBehaviour
         rbody = GetComponent<Rigidbody>();
         position = transform.position;
         transform.rotation = Quaternion.identity;
+        animator = GetComponent<Animator>();
         rotation = new Vector3(0, 90, 0);
         jumpCount = 0;
         HP = 3;
@@ -32,7 +36,7 @@ public class player_SC : MonoBehaviour
     void Update()
     {
         position = transform.position;
-
+        animator.SetBool("move", false);
         // ジャンプをするためのコード（もしスペースキーが押されて、上方向に速度がない時に）
         if (Input.GetKey(KeyCode.A))
         {
@@ -40,6 +44,8 @@ public class player_SC : MonoBehaviour
             rbody.AddForce(new Vector3(-1, 0, 0) * speed);
             position.x -= speed;
             rotation = new Vector3(0, -90, 0);
+
+            animator.SetBool("move",true);
         }
 
         if (Input.GetKey(KeyCode.D))
@@ -48,6 +54,8 @@ public class player_SC : MonoBehaviour
             rbody.AddForce(new Vector3(1, 0, 0) * speed);
             position.x += speed;
             rotation = new Vector3(0, 90, 0);
+
+            animator.SetBool("move", true);
         }
 
         if (Input.GetKeyDown(KeyCode.W) && jumpCount < maxJumpCount)
@@ -55,6 +63,8 @@ public class player_SC : MonoBehaviour
             // リジッドボディに力を加える（上方向にジャンプ力をかける）
             rbody.AddForce(new Vector3(0, 1, 0) * jumpP);
             jumpCount++;
+
+            animator.SetTrigger("jump");
         }
 
         position.z = 0.0f;
