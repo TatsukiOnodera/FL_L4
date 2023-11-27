@@ -85,9 +85,20 @@ public class Player : MonoBehaviour
         {
             jumpCount = 0;
         }
-        else if (collision.gameObject.CompareTag("goal"))
+    }
+
+    void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.CompareTag("goal"))
         {
-            SceneManager.LoadScene("GameClear");
+            if (SceneManager.GetActiveScene().name == "stage1")
+            {
+                SceneManager.LoadScene("GameClear");
+            }
+            else if (SceneManager.GetActiveScene().name == "Alexa_Space")
+            {
+                SceneManager.LoadScene("GameClear");
+            }
         }
     }
 
