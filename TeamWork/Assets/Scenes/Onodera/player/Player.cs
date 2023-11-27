@@ -23,6 +23,10 @@ public class Player : MonoBehaviour
     // HP
     [SerializeField] private int HP = 0;
 
+    //animation
+    //private Animator animator;
+    //private bool move = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +36,7 @@ public class Player : MonoBehaviour
         transform.rotation = Quaternion.identity;
         rotation = new Vector3(0, 90, 0);
 
+       // animator = GetComponent<Animator>();
         // 初期化
         jumpCount = 0;
     }
@@ -40,10 +45,11 @@ public class Player : MonoBehaviour
     void Update()
     {
         position = transform.position;
-
+        //animator.SetBool("move", false);
         // ジャンプをするためのコード（もしスペースキーが押されて、上方向に速度がない時に）
         if (Input.GetKey(KeyCode.A))
         {
+            //animator.SetBool("move", true);
             // リジッドボディに力を加える（上方向にジャンプ力をかける）
             rbody.AddForce(new Vector3(-1, 0, 0) * speed);
             position.x -= speed;
@@ -52,6 +58,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKey(KeyCode.D))
         {
+          //  animator.SetBool("move", true);
             // リジッドボディに力を加える（上方向にジャンプ力をかける）
             rbody.AddForce(new Vector3(1, 0, 0) * speed);
             position.x += speed;
@@ -63,6 +70,7 @@ public class Player : MonoBehaviour
             // リジッドボディに力を加える（上方向にジャンプ力をかける）
             rbody.AddForce(new Vector3(0, 1, 0) * jumpP);
             jumpCount++;
+           // animator.SetTrigger("jump");
         }
 
         position.z = 0.0f;

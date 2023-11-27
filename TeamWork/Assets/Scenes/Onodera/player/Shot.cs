@@ -24,6 +24,7 @@ public class Shot : MonoBehaviour
             fever.UpFeverGauge();
             Vector3 pos = transform.position;
             pos.x += 0.5f * transform.localScale.x + 0.5f * bullet.transform.localScale.x;
+            pos.y += 0.7f * transform.localScale.y + 0.7f * bullet.transform.localScale.y;
             Vector3 rot = transform.rotation.eulerAngles;
             rot = new Vector3(rot.y, rot.x, rot.z);
             Instantiate(bullet, pos, Quaternion.Euler(rot));
