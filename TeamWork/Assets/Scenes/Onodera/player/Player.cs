@@ -68,6 +68,11 @@ public class Player : MonoBehaviour
         position.z = 0.0f;
         transform.position = position;
         transform.rotation = Quaternion.Euler(rotation);
+
+        if (position.y < -5.5)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
     }
 
     /// <summary>

@@ -21,7 +21,6 @@ public class Shot : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            fever.UpFeverGauge();
             Vector3 pos = transform.position;
             pos.x += 0.5f * transform.localScale.x + 0.5f * bullet.transform.localScale.x;
             Vector3 rot = transform.rotation.eulerAngles;
