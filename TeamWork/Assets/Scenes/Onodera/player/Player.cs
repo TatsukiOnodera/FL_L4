@@ -85,6 +85,10 @@ public class Player : MonoBehaviour
         {
             jumpCount = 0;
         }
+        else if (collision.gameObject.CompareTag("goal"))
+        {
+            SceneManager.LoadScene("GameClear");
+        }
     }
 
     /// <summary>
