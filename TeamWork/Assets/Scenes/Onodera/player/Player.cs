@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     Vector3 rotation;
 
     // ジャンプのカウンター
-    private int jumpCount = 0;
+    public int jumpCount = 0;
 
     // HP
     [SerializeField] private int HP = 0;
@@ -41,28 +41,32 @@ public class Player : MonoBehaviour
     {
         position = transform.position;
 
-        // ジャンプをするためのコード（もしスペースキーが押されて、上方向に速度がない時に）
-        if (Input.GetKey(KeyCode.A))
+        FeverTime fever = GetComponent<FeverTime>();
+        if (fever.GetIsBig() == false)
         {
-            // リジッドボディに力を加える（上方向にジャンプ力をかける）
-            rbody.AddForce(new Vector3(-1, 0, 0) * speed);
-            position.x -= speed;
-            rotation = new Vector3(0, -90, 0);
-        }
+            // ジャンプをするためのコード（もしスペースキーが押されて、上方向に速度がない時に）
+            if (Input.GetKey(KeyCode.A))
+            {
+                // リジッドボディに力を加える（上方向にジャンプ力をかける）
+                rbody.AddForce(new Vector3(-1, 0, 0) * speed);
+                position.x -= speed;
+                rotation = new Vector3(0, -90, 0);
+            }
 
-        if (Input.GetKey(KeyCode.D))
-        {
-            // リジッドボディに力を加える（上方向にジャンプ力をかける）
-            rbody.AddForce(new Vector3(1, 0, 0) * speed);
-            position.x += speed;
-            rotation = new Vector3(0, 90, 0);
-        }
+            if (Input.GetKey(KeyCode.D))
+            {
+                // リジッドボディに力を加える（上方向にジャンプ力をかける）
+                rbody.AddForce(new Vector3(1, 0, 0) * speed);
+                position.x += speed;
+                rotation = new Vector3(0, 90, 0);
+            }
 
-        if (Input.GetKeyDown(KeyCode.W) && jumpCount < maxJumpCount)
-        {
-            // リジッドボディに力を加える（上方向にジャンプ力をかける）
-            rbody.AddForce(new Vector3(0, 1, 0) * jumpP);
-            jumpCount++;
+            if (Input.GetKeyDown(KeyCode.W) && jumpCount < maxJumpCount)
+            {
+                // リジッドボディに力を加える（上方向にジャンプ力をかける）
+                rbody.AddForce(new Vector3(0, 1, 0) * jumpP);
+                jumpCount++;
+            }
         }
 
         position.z = 0.0f;

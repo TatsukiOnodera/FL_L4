@@ -176,9 +176,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2b51120f185898419061b5b7043ba3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.015
+  speed: 0.2
   jumpP: 2000
   maxJumpCount: 2
+  jumpCount: 0
   HP: 3
 --- !u!114 &3845530556176705367
 MonoBehaviour:
@@ -194,9 +195,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_player: {fileID: 337156375480317794}
   m_bullet: {fileID: 3698864265895668997, guid: 0c2c9e9da8367ed44b2ef94d30aeb499, type: 3}
-  m_limitBigTime: 10000
+  m_limitBigTime: 200
   m_limitFeverGauge: 10
-  m_LimitShotInterval: 600
+  m_LimitShotInterval: 120
 --- !u!114 &4950247832543868535
 MonoBehaviour:
   m_ObjectHideFlags: 0

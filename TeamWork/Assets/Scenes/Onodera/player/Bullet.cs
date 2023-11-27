@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     int count = 0;
-    float speed = 0.07f;
+    [SerializeField] private float speed = 1.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +29,7 @@ public class Bullet : MonoBehaviour
 
         count++;
 
-        if (count >= 140)
+        if (count >= 240)
         {
             Destroy(this.gameObject);
         }

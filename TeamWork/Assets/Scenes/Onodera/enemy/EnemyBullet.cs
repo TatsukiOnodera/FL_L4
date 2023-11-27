@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyBullet : MonoBehaviour
 {
     private int count = 0;
-    [SerializeField] private float speed = 0.009f;
+    [SerializeField] private float speed = 1;
     [SerializeField] private Vector3 vec = Vector3.zero;
 
     // Start is called before the first frame update
@@ -25,7 +25,7 @@ public class EnemyBullet : MonoBehaviour
 
         count++;
 
-        if (count >= 1500)
+        if (count >= 300)
         {
             Destroy(this.gameObject);
         }
@@ -40,7 +40,11 @@ public class EnemyBullet : MonoBehaviour
     {
         if (other.gameObject.tag == "player")
         {
-            other.GetComponent<Player>().Damage();
+            GameObject obj = GameObject.Find("Player");
+            FeverTime m_feverTime = obj.GetComponent<FeverTime>();
+            if (m_feverTime.GetIsBig() == true) return;
+
+                other.GetComponent<Player>().Damage();
             Destroy(this.gameObject);
         }
     }
