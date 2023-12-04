@@ -1,28 +1,43 @@
 Shader "Unlit/PostOutLine_SH"
 {
-    Properties
-    {
+    //show values to edit in inspector
+    Properties{
         [HideInInspector]_MainTex ("Texture", 2D) = "white" {}
+
         _OutlineColor ("Outline Color", Color) = (0,0,0,1)
+
         _Depth1 ("Depth dist 1 multiplier", Range(0,1)) = 0.6
+
         _Depth1_1 ("Depth dist 1.4 multiplier", Range(0,1)) = 0.6
+
         _Depth2 ("Depth dist 2 multiplier", Range(0,1)) = 0.5
+
         _Depth2_1 ("Depth dist 2.2 multiplier", Range(0,1)) = 0.5
+
         _Depth2_2 ("Depth dist 2.8 multiplier", Range(0,1)) = 0.5
+
         _Depth3 ("Depth dist 3 multiplier", Range(0,1)) = 0.5
+
         _Depth3_1 ("Depth dist 3.2 multiplier", Range(0,1)) = 0.5
+
         _Depth3_2 ("Depth dist 3.6 multiplier", Range(0,1)) = 0.4
 
         _Normal1 ("Normal dist 1 multiplier", Range(0,1)) = 0.8
+
         _Normal1_1 ("Normal dist 1.4 multiplier", Range(0,1)) = 0.7
+
         _Normal2 ("Normal dist 2 multiplier", Range(0,1)) = 0.5
+
         _Normal2_1 ("Normal dist 2.2 multiplier", Range(0,1)) = 0.1
+
         _Normal2_2 ("Normal dist 2.8 multiplier", Range(0,1)) = 0.1
+
         _NormalCutOff ("Normal diff Cut-off", Range(0,1)) = 0.04
     }
 
-    SubShader
-    {
+    SubShader{
+        // markers that specify that we don't need culling 
+        // or comparing/writing to the depth buffer
         Cull Off
         ZWrite Off 
         ZTest Always
@@ -168,7 +183,6 @@ Shader "Unlit/PostOutLine_SH"
                 CompareNormal2(normalDifference, normal, uvOffset(i.uv, 1, -1), uvOffset(i.uv, -1, 0), _Normal2);
                 CompareNormal2(normalDifference, normal, uvOffset(i.uv, 1, 1), uvOffset(i.uv, 0, -1), _Normal2);
                 CompareNormal2(normalDifference, normal, uvOffset(i.uv, -1, 1), uvOffset(i.uv, 0, -1), _Normal2);
-
                 // Distance 1.4-1.4 Normal
                 CompareNormal2(normalDifference, normal, uvOffset(i.uv, 1, 1), uvOffset(i.uv, -1, -1), _Normal2_1);
                 CompareNormal2(normalDifference, normal, uvOffset(i.uv, -1, 1), uvOffset(i.uv, 1, -1), _Normal2_1);
@@ -241,11 +255,8 @@ Shader "Unlit/PostOutLine_SH"
 
 
                 float outline = saturate(max(normalDifference, depthDifference)) ;
-
-                fixed4 sourceColor = tex2D(_MainTex, i.uv);
-
-                fixed4 color = lerp(sourceColor, _OutlineColor, outline);
-
+                float4 sourceColor = tex2D(_MainTex, i.uv);
+                float4 color = lerp(sourceColor, _OutlineColor, outline);
                 return color;
             }
             ENDCG
