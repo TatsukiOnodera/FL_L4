@@ -78,7 +78,7 @@ public class FeverTime : MonoBehaviour
     private void BeBig()
     {
         // フィーバーゲージがたまっていないか
-        if (m_limitFeverGauge <= m_feverGauge && Input.GetKeyDown(KeyCode.B))
+        if (m_limitFeverGauge <= m_feverGauge && Input.GetKeyDown(KeyCode.V))
         {
             if (m_player.transform.localScale.x != 5.0f)
             {
