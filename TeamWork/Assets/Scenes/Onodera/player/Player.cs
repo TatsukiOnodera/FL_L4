@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     Vector3 rotation;
 
     // ジャンプのカウンター
-    public int jumpCount = 0;
+    private int jumpCount = 0;
 
     // HP
     [SerializeField] private int HP = 0;

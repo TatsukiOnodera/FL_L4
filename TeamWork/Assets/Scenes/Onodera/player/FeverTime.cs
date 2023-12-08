@@ -29,15 +29,12 @@ public class FeverTime : MonoBehaviour
     // ショットの間隔タイマー
     private int m_intervalTimer = 0;
 
-    // 前進する速度
-    private float m_advanceSpeed = 0;
-
     /*メンバ関数*/
     // Start is called before the first frame update
     void Start()
     {
         m_isBigTimer = m_limitBigTime;
-        m_intervalTimer = m_LimitShotInterval;
+        m_intervalTimer = 0;
     }
 
     // Update is called once per frame
@@ -97,18 +94,17 @@ public class FeverTime : MonoBehaviour
             if (0 < GetMikeVolume())
             {
                 m_intervalTimer = m_LimitShotInterval;
-                m_advanceSpeed = GetMikeVolume();
-
                 Vector3 pos = m_player.transform.position;
-                pos.x += m_advanceSpeed / 8 + 0.5f * m_player.transform.localScale.x;
-
-                var bullet = Instantiate(m_bullet, pos, Quaternion.identity);
-                bullet.transform.localScale = new Vector3(m_advanceSpeed / 4, m_advanceSpeed / 4, m_advanceSpeed / 4);
+                float advanceSpeed = GetMikeVolume();
+                pos.x += advanceSpeed / 8 + 0.5f * m_player.transform.localScale.x;
+                Vector3 rot = transform.rotation.eulerAngles;
+                rot = new Vector3(rot.y, rot.x, rot.z);
+                var bullet = Instantiate(m_bullet, pos, Quaternion.Euler(rot));
+                bullet.transform.localScale = new Vector3(advanceSpeed / 4, advanceSpeed / 4, advanceSpeed / 4);
             }
         }
         else
         {
-            m_player.transform.Translate(new Vector3(m_advanceSpeed / 10000, 0, 0));
             m_intervalTimer--;
         }
     }
@@ -124,7 +120,6 @@ public class FeverTime : MonoBehaviour
             m_isBigTimer = m_limitBigTime;
             m_intervalTimer = m_LimitShotInterval;
             m_feverGauge = 0;
-            m_advanceSpeed = 0;
         }
         else
         {
@@ -142,7 +137,6 @@ public class FeverTime : MonoBehaviour
         return mike.GetVolume();
     }
 
-    /*アクセッサetc.*/
     /// <summary>
     /// 巨大化中か
     /// </summary>
@@ -166,5 +160,24 @@ public class FeverTime : MonoBehaviour
     public float GetFeverGauge()
     {
         return (float)m_limitFeverGauge / m_feverGauge;
+    }
+
+    /*アクセッサetc.*/
+    /// <summary>
+    /// フィーバーゲージの最大値を取得
+    /// </summary>
+    /// <returns></returns>
+    public int GetLimitFeverGauge()
+    {
+        return m_limitFeverGauge;
+    }
+
+    /// <summary>
+    /// フィーバーゲージをセット
+    /// </summary>
+    /// <param name="feverGaugeNum">int</param>
+    public void SetFeverGauge(int feverGaugeNum)
+    {
+        m_feverGauge = feverGaugeNum;
     }
 }

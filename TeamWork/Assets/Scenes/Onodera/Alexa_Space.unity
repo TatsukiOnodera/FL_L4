@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: localGravity.y
       value: -30
       objectReference: {fileID: 0}
+    - target: {fileID: -4680674266619845313, guid: be59aa39f49acf143acf3dbb27ee8641, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2025525401}
     - target: {fileID: -1814776484464701301, guid: be59aa39f49acf143acf3dbb27ee8641, type: 3}
       propertyPath: enemyHP
       value: 3
@@ -567,6 +571,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3845530556176705367, guid: a02ae555c374f3a4a8410f7fed3a2578, type: 3}
+      propertyPath: m_limitBigTime
+      value: 240
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845530556176705367, guid: a02ae555c374f3a4a8410f7fed3a2578, type: 3}
+      propertyPath: m_LimitShotInterval
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 4950247832543868535, guid: a02ae555c374f3a4a8410f7fed3a2578, type: 3}
+      propertyPath: m_AmpGain
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 4950247832543868535, guid: a02ae555c374f3a4a8410f7fed3a2578, type: 3}
+      propertyPath: m_lowestVolume
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4968480605333418299, guid: a02ae555c374f3a4a8410f7fed3a2578, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.5
@@ -700,6 +720,7 @@ GameObject:
   - component: {fileID: 1152270028}
   - component: {fileID: 1152270027}
   - component: {fileID: 1152270032}
+  - component: {fileID: 1152270033}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -809,6 +830,18 @@ MonoBehaviour:
   m_width: 0
   nowHP: 0
   nowFever: 0
+--- !u!114 &1152270033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152270026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fc33db2148b76e42a24872d6e5b8b74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1418888615
 GameObject:
   m_ObjectHideFlags: 0
@@ -960,6 +993,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1496316076}
   m_CullTransparentMesh: 1
+--- !u!1 &2025525401 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 337156375480317794, guid: a02ae555c374f3a4a8410f7fed3a2578, type: 3}
+  m_PrefabInstance: {fileID: 986268375}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2104614109
 PrefabInstance:
   m_ObjectHideFlags: 0
