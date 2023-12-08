@@ -139,6 +139,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 2025525401}
+    - target: {fileID: -4680674266619845313, guid: be59aa39f49acf143acf3dbb27ee8641, type: 3}
+      propertyPath: shotTiming
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: -1814776484464701301, guid: be59aa39f49acf143acf3dbb27ee8641, type: 3}
       propertyPath: enemyHP
       value: 3
@@ -571,6 +575,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3845530556176705367, guid: a02ae555c374f3a4a8410f7fed3a2578, type: 3}
+      propertyPath: m_bullet
+      value: 
+      objectReference: {fileID: 3698864265895668997, guid: 718fe1193402b2943ac839b61bd8e554, type: 3}
     - target: {fileID: 3845530556176705367, guid: a02ae555c374f3a4a8410f7fed3a2578, type: 3}
       propertyPath: m_limitBigTime
       value: 240
