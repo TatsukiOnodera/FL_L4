@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class FeverBullet : MonoBehaviour
 {
+    // カウンター
     int count = 0;
+    // 弾速
     [SerializeField] private float speed = 1.0f;
+    // 威力
+    [SerializeField] private int damage = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -39,14 +43,10 @@ public class FeverBullet : MonoBehaviour
     {
         if (other.gameObject.tag == "enemy")
         {
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < damage; i++)
             {
                 other.GetComponent<Enemy>().damage();
             }
-            Destroy(this.gameObject);
-            GameObject obj = GameObject.Find("Player");
-            FeverTime fever = obj.GetComponent<FeverTime>();
-            fever.UpFeverGauge();
         }
     }
 }
