@@ -196,7 +196,7 @@ MonoBehaviour:
   m_bullet: {fileID: 3698864265895668997, guid: 0c2c9e9da8367ed44b2ef94d30aeb499, type: 3}
   m_limitBigTime: 240
   m_limitFeverGauge: 10
-  m_LimitShotInterval: 60
+  m_limitShotInterval: 60
 --- !u!114 &4950247832543868535
 MonoBehaviour:
   m_ObjectHideFlags: 0

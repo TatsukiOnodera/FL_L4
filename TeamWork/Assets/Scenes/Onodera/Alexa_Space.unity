@@ -581,10 +581,14 @@ PrefabInstance:
       objectReference: {fileID: 3698864265895668997, guid: 718fe1193402b2943ac839b61bd8e554, type: 3}
     - target: {fileID: 3845530556176705367, guid: a02ae555c374f3a4a8410f7fed3a2578, type: 3}
       propertyPath: m_limitBigTime
-      value: 240
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 3845530556176705367, guid: a02ae555c374f3a4a8410f7fed3a2578, type: 3}
       propertyPath: m_LimitShotInterval
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845530556176705367, guid: a02ae555c374f3a4a8410f7fed3a2578, type: 3}
+      propertyPath: m_limitShotInterval
       value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 4950247832543868535, guid: a02ae555c374f3a4a8410f7fed3a2578, type: 3}

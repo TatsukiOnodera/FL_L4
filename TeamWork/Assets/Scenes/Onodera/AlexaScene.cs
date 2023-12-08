@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Alexa_SC : MonoBehaviour
+public class AlexaScene : MonoBehaviour
 {
     // プレイヤーのオブジェクト
     private FeverTime m_fever;

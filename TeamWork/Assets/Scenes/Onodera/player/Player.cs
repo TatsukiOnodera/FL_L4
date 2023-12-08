@@ -68,6 +68,10 @@ public class Player : MonoBehaviour
                 jumpCount++;
             }
         }
+        else if (0 < fever.GetIntervalTimer())
+        {
+            position.x += 0.01f;
+        }
 
         position.z = 0.0f;
         transform.position = position;

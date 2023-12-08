@@ -18,7 +18,7 @@ public class FeverTime : MonoBehaviour
     [SerializeField] private int m_limitFeverGauge;
 
     // ショットの最大間隔
-    [SerializeField] private int m_LimitShotInterval;
+    [SerializeField] private int m_limitShotInterval;
 
     // フィーバーゲージ
     private int m_feverGauge = 0;
@@ -44,10 +44,8 @@ public class FeverTime : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (m_isBig == false)
-        {
-            BeBig();
-        }
+        // 巨大化するか
+        BeBig();
 
         // 巨大化していないなら処理を終了
         if (m_isBig == false)
@@ -78,7 +76,7 @@ public class FeverTime : MonoBehaviour
     private void BeBig()
     {
         // フィーバーゲージがたまっていないか
-        if (m_limitFeverGauge <= m_feverGauge && Input.GetKeyDown(KeyCode.V))
+        if (m_limitFeverGauge <= m_feverGauge && Input.GetKeyDown(KeyCode.V) && m_isBig == false)
         {
             if (m_player.transform.localScale.x != 5.0f)
             {
@@ -100,7 +98,7 @@ public class FeverTime : MonoBehaviour
             // マイクに音が入っているか
             if (0 < GetMikeVolume())
             {
-                m_intervalTimer = m_LimitShotInterval;
+                m_intervalTimer = m_limitShotInterval;
                 Vector3 pos = m_player.transform.position;
                 float advanceSpeed = GetMikeVolume();
                 pos.x += advanceSpeed / 8 + 0.5f * m_player.transform.localScale.x;
@@ -125,7 +123,7 @@ public class FeverTime : MonoBehaviour
         if (m_isBigTimer <= 0)
         {
             m_isBigTimer = m_limitBigTime;
-            m_intervalTimer = m_LimitShotInterval;
+            m_intervalTimer = 0;
             m_feverGauge = 0;
             m_player.transform.localScale = new Vector3(1, 1, 1);
             m_isBig = false;
@@ -172,6 +170,15 @@ public class FeverTime : MonoBehaviour
     public int GetLimitFeverGauge()
     {
         return m_limitFeverGauge;
+    }
+
+    /// <summary>
+    /// インターバルのタイマーを取得
+    /// </summary>
+    /// <returns>int</returns>
+    public int GetIntervalTimer()
+    {
+        return m_intervalTimer;
     }
 
     /// <summary>
