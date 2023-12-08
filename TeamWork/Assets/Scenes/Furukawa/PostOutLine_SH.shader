@@ -2,36 +2,22 @@ Shader "Unlit/PostOutLine_SH"
 {
     //show values to edit in inspector
     Properties{
-        [HideInInspector]_MainTex ("Texture", 2D) = "white" {}
+        [HideInInspector] _MainTex ("Texture", 2D) = "white" {}
 
         _OutlineColor ("Outline Color", Color) = (0,0,0,1)
-
         _Depth1 ("Depth dist 1 multiplier", Range(0,1)) = 0.6
-
         _Depth1_1 ("Depth dist 1.4 multiplier", Range(0,1)) = 0.6
-
         _Depth2 ("Depth dist 2 multiplier", Range(0,1)) = 0.5
-
         _Depth2_1 ("Depth dist 2.2 multiplier", Range(0,1)) = 0.5
-
         _Depth2_2 ("Depth dist 2.8 multiplier", Range(0,1)) = 0.5
-
         _Depth3 ("Depth dist 3 multiplier", Range(0,1)) = 0.5
-
         _Depth3_1 ("Depth dist 3.2 multiplier", Range(0,1)) = 0.5
-
         _Depth3_2 ("Depth dist 3.6 multiplier", Range(0,1)) = 0.4
-
         _Normal1 ("Normal dist 1 multiplier", Range(0,1)) = 0.8
-
         _Normal1_1 ("Normal dist 1.4 multiplier", Range(0,1)) = 0.7
-
         _Normal2 ("Normal dist 2 multiplier", Range(0,1)) = 0.5
-
         _Normal2_1 ("Normal dist 2.2 multiplier", Range(0,1)) = 0.1
-
         _Normal2_2 ("Normal dist 2.8 multiplier", Range(0,1)) = 0.1
-
         _NormalCutOff ("Normal diff Cut-off", Range(0,1)) = 0.04
     }
 
@@ -41,6 +27,9 @@ Shader "Unlit/PostOutLine_SH"
         Cull Off
         ZWrite Off 
         ZTest Always
+
+        Tags { "RenderType"="Opaque" }
+        LOD 100
 
         Pass{
             CGPROGRAM
