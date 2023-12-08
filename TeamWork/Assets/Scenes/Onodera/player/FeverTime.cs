@@ -29,19 +29,28 @@ public class FeverTime : MonoBehaviour
     // ショットの間隔タイマー
     private int m_intervalTimer = 0;
 
+    // 巨大化状態
+    private bool m_isBig = false;
+
     /*メンバ関数*/
     // Start is called before the first frame update
     void Start()
     {
         m_isBigTimer = m_limitBigTime;
         m_intervalTimer = 0;
+        m_isBig = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (m_isBig == false)
+        {
+            BeBig();
+        }
+
         // 巨大化していないなら処理を終了
-        if (IsBig() == false)
+        if (m_isBig == false)
         {
             return;
         }
@@ -60,25 +69,23 @@ public class FeverTime : MonoBehaviour
         if (m_limitFeverGauge <= m_feverGauge)
         {
             m_feverGauge = m_limitFeverGauge;
-            m_player.transform.Translate(0, 2.5f, 0);
         }
     }
 
     /// <summary>
     /// 巨大化処理
     /// </summary>
-    private bool IsBig()
+    private void BeBig()
     {
         // フィーバーゲージがたまっていないか
-        if (m_feverGauge < m_limitFeverGauge)
+        if (m_limitFeverGauge <= m_feverGauge && Input.GetKeyDown(KeyCode.B))
         {
-            m_player.transform.localScale = new Vector3(1, 1, 1);
-            return false;
-        }
-        else
-        {
+            if (m_player.transform.localScale.x != 5.0f)
+            {
+                m_player.transform.Translate(0, 2.5f, 0);
+            }
             m_player.transform.localScale = new Vector3(5, 5, 5);
-            return true;
+            m_isBig = true;
         }
     }
 
@@ -120,6 +127,8 @@ public class FeverTime : MonoBehaviour
             m_isBigTimer = m_limitBigTime;
             m_intervalTimer = m_LimitShotInterval;
             m_feverGauge = 0;
+            m_player.transform.localScale = new Vector3(1, 1, 1);
+            m_isBig = false;
         }
         else
         {
@@ -138,22 +147,6 @@ public class FeverTime : MonoBehaviour
     }
 
     /// <summary>
-    /// 巨大化中か
-    /// </summary>
-    /// <returns>bool</returns>
-    public bool GetIsBig()
-    {
-        if (m_feverGauge < m_limitFeverGauge)
-        {
-            return false;
-        }
-        else
-        {
-            return true;
-        }
-    }
-
-    /// <summary>
     /// フィーバーゲージの割合を取得
     /// </summary>
     /// <returns>int</returns>
@@ -163,6 +156,15 @@ public class FeverTime : MonoBehaviour
     }
 
     /*アクセッサetc.*/
+    /// <summary>
+    /// 巨大化中か
+    /// </summary>
+    /// <returns>bool</returns>
+    public bool GetIsBig()
+    {
+        return m_isBig;
+    }
+
     /// <summary>
     /// フィーバーゲージの最大値を取得
     /// </summary>
