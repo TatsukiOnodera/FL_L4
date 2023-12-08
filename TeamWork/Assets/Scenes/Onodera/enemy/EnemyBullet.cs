@@ -40,11 +40,10 @@ public class EnemyBullet : MonoBehaviour
     {
         if (other.gameObject.tag == "player")
         {
-            GameObject obj = GameObject.Find("Player");
-            FeverTime m_feverTime = obj.GetComponent<FeverTime>();
+            FeverTime m_feverTime = other.GetComponent<FeverTime>();
             if (m_feverTime.GetIsBig() == true) return;
 
-                other.GetComponent<Player>().Damage();
+            other.GetComponent<Player>().Damage();
             Destroy(this.gameObject);
         }
     }
