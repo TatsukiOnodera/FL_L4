@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemy_SC : MonoBehaviour
+public class enemy_CS : MonoBehaviour
 {
     private int enemyHP;
 

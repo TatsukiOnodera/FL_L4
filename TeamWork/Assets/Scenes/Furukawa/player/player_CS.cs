@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class player_SC : MonoBehaviour
+public class player_CS : MonoBehaviour
 {
     public float speed = 0.01f;   // 横に移動する速度
     public float jumpP = 2000f; // ジャンプ力
@@ -34,7 +34,7 @@ public class player_SC : MonoBehaviour
         position = transform.position;
 
         // ジャンプをするためのコード（もしスペースキーが押されて、上方向に速度がない時に）
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) || Input.GetAxis("L_Stick_H") < 0)
         {
             // リジッドボディに力を加える（上方向にジャンプ力をかける）
             rbody.AddForce(new Vector3(-1, 0, 0) * speed);
@@ -42,7 +42,7 @@ public class player_SC : MonoBehaviour
             rotation = new Vector3(0, -90, 0);
         }
 
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) || Input.GetAxis("L_Stick_H") > 0)
         {
             // リジッドボディに力を加える（上方向にジャンプ力をかける）
             rbody.AddForce(new Vector3(1, 0, 0) * speed);
@@ -50,7 +50,7 @@ public class player_SC : MonoBehaviour
             rotation = new Vector3(0, 90, 0);
         }
 
-        if (Input.GetKeyDown(KeyCode.W) && jumpCount < maxJumpCount)
+        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown("joystick button 0")) && jumpCount < maxJumpCount)
         {
             // リジッドボディに力を加える（上方向にジャンプ力をかける）
             rbody.AddForce(new Vector3(0, 1, 0) * jumpP);

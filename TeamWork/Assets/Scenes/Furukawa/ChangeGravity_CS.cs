@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChangeGravity : MonoBehaviour
+public class ChangeGravity_CS : MonoBehaviour
 {
     [SerializeField] private Vector3 localGravity;
     private Rigidbody rBody;

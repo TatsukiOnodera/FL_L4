@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class bullet_E_SC : MonoBehaviour
+public class bullet_E_CS : MonoBehaviour
 {
     int count = 0;
     float speed = 0.009f;
@@ -40,7 +40,7 @@ public class bullet_E_SC : MonoBehaviour
     {
         if (other.gameObject.tag == "player")
         {
-            other.GetComponent<player_SC>().damage();
+            other.GetComponent<player_CS>().damage();
             Destroy(this.gameObject);
         }
     }

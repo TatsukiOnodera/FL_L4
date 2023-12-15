@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class shot_E_SC : MonoBehaviour
+public class shot_E_CS : MonoBehaviour
 {
     public GameObject bullet;
 
@@ -41,7 +41,7 @@ public class shot_E_SC : MonoBehaviour
         rot = new Vector3(rot.y, rot.x, rot.z);
         Instantiate(bullet, pos, Quaternion.Euler(rot));
 
-        var bulletobject = bullet.GetComponent<bullet_E_SC>();
+        var bulletobject = bullet.GetComponent<bullet_E_CS>();
 
         Vector3 direction = player.transform.position - transform.position;
 

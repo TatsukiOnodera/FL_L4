@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class camera_SC : MonoBehaviour
+public class camera_CS : MonoBehaviour
 {
     public GameObject target; // ’Ç]‚·‚é‘ÎÛ‚ğŒˆ‚ß‚é•Ï”
     Vector3 pos;              // ƒJƒƒ‰‚Ì‰ŠúˆÊ’u‚ğ‹L‰¯‚·‚é‚½‚ß‚Ì•Ï”

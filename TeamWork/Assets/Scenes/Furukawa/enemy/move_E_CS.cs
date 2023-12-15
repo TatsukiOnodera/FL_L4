@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class move_E_SC : MonoBehaviour
+public class move_E_CS : MonoBehaviour
 {
     public int maxMoveCount = 200;
     public float moveSpeed = 0.01f;
