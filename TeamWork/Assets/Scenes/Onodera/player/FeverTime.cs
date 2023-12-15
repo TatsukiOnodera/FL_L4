@@ -20,6 +20,9 @@ public class FeverTime : MonoBehaviour
     // ショットの最大間隔
     [SerializeField] private int m_limitShotInterval;
 
+    // 当たり判定
+    private Rigidbody m_rbody;
+
     // フィーバーゲージ
     private int m_feverGauge = 0;
 
@@ -39,6 +42,7 @@ public class FeverTime : MonoBehaviour
         m_isBigTimer = m_limitBigTime;
         m_intervalTimer = 0;
         m_isBig = false;
+        m_rbody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -81,8 +85,10 @@ public class FeverTime : MonoBehaviour
             if (m_player.transform.localScale.x != 5.0f)
             {
                 m_player.transform.Translate(0, 2.5f, 0);
+                m_rbody.transform.Translate(0, 2.5f, 0);
             }
             m_player.transform.localScale = new Vector3(5, 5, 5);
+            m_rbody.transform.localScale = new Vector3(5, 5, 5);
             m_isBig = true;
         }
     }
@@ -99,11 +105,14 @@ public class FeverTime : MonoBehaviour
             if (0 < GetMikeVolume())
             {
                 m_intervalTimer = m_limitShotInterval;
+
                 Vector3 pos = m_player.transform.position;
                 float advanceSpeed = GetMikeVolume();
                 pos.x += advanceSpeed / 8 + 0.5f * m_player.transform.localScale.x;
+
                 Vector3 rot = transform.rotation.eulerAngles;
                 rot = new Vector3(rot.y, rot.x, rot.z);
+
                 var bullet = Instantiate(m_bullet, pos, Quaternion.Euler(rot));
                 bullet.transform.localScale = new Vector3(advanceSpeed / 4, advanceSpeed / 4, advanceSpeed / 4);
             }
@@ -126,6 +135,7 @@ public class FeverTime : MonoBehaviour
             m_intervalTimer = 0;
             m_feverGauge = 0;
             m_player.transform.localScale = new Vector3(1, 1, 1);
+            m_rbody.transform.localScale = new Vector3(1, 1, 1);
             m_isBig = false;
         }
         else

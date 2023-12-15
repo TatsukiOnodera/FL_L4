@@ -70,7 +70,9 @@ public class Player : MonoBehaviour
         }
         else if (0 < fever.GetIntervalTimer())
         {
-            position.x += 0.01f;
+            float num = 0.01f;
+            position.x += num;
+            rbody.AddForce(new Vector3(1, 0, 0) * num);
         }
 
         position.z = 0.0f;
@@ -95,17 +97,20 @@ public class Player : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("goal"))
+        if (other.gameObject.CompareTag("enemy"))
         {
-            if (SceneManager.GetActiveScene().name == "stage1")
+            FeverTime fever = GetComponent<FeverTime>();
+            if (0 < fever.GetIntervalTimer())
             {
-                SceneManager.LoadScene("GameClear");
+                return;
             }
-            else if (SceneManager.GetActiveScene().name == "Alexa_Space")
+
+            int num = other.GetComponent<Enemy>().GetHP();
+            for (int i = 0; i < num; i++)
             {
-                SceneManager.LoadScene("GameClear");
+                other.GetComponent<Enemy>().damage();
             }
         }
     }

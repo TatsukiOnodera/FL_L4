@@ -25,4 +25,9 @@ public class Enemy : MonoBehaviour
     {
         enemyHP -= 1;
     }
+
+    public int GetHP()
+    {
+        return enemyHP;
+    }
 }

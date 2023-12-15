@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class HUD : MonoBehaviour
 {
-    /*メンバ変数*/
     // HPのHUD
     [SerializeField] private RectTransform HPGauge;
     // フィーバーゲージのHUD
