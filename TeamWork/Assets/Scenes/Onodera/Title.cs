@@ -16,7 +16,7 @@ public class Title : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SceneManager.LoadScene("stage1");
+            SceneManager.LoadScene("Menu");
         }
     }
 }

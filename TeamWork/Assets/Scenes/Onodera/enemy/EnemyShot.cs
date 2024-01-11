@@ -11,6 +11,8 @@ public class EnemyShot : MonoBehaviour
     private int count = 0;
     [SerializeField] private int shotTiming = 800;
 
+    [SerializeField] private int shotDistance = 10;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +29,10 @@ public class EnemyShot : MonoBehaviour
 
         count++;
 
-        if(count == shotTiming)
+        Vector3 enemyPos = transform.position;
+        Vector3 playerPos = player.transform.position;
+        float dis = Vector3.Distance(enemyPos, playerPos);
+        if (shotTiming <= count && dis <= shotDistance)
         {
             shot();
             count = 0;

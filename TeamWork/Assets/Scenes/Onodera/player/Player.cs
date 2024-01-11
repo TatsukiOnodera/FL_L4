@@ -73,6 +73,7 @@ public class Player : MonoBehaviour
             float num = 0.01f;
             position.x += num;
             rbody.AddForce(new Vector3(1, 0, 0) * num);
+            rotation = new Vector3(0, 90, 0);
         }
 
         position.z = 0.0f;
