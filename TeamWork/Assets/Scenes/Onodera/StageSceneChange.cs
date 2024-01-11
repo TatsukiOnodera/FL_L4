@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneChange : MonoBehaviour
+public class StageSceneChange : MonoBehaviour
 {
     // フェードイン
     [SerializeField] private GameObject m_fadeIn;

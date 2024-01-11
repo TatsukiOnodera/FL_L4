@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Title : MonoBehaviour
 {
+    bool isChange = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +18,12 @@ public class Title : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SceneManager.LoadScene("Menu");
+            isChange = true;
         }
+    }
+
+    public bool GetIsChange()
+    {
+        return isChange;
     }
 }
