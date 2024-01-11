@@ -147,6 +147,10 @@ PrefabInstance:
       propertyPath: enemyHP
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: -1814776484464701301, guid: be59aa39f49acf143acf3dbb27ee8641, type: 3}
+      propertyPath: m_isWalker
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 512357518483212499, guid: be59aa39f49acf143acf3dbb27ee8641, type: 3}
       propertyPath: m_Name
       value: Enemy_02
