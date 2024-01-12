@@ -10,99 +10,121 @@ public class Boss_01_CS : MonoBehaviour
 {
     public enum bossState
     {
-        Idle,
-        Shot,
-        Attack,
-        Freeze
+        Idle, //待機
+        Shot, //射撃
+        Attack, //近接
     };
 
+    public struct shotManager
+    {
+        int shotCount; //発射間隔カウント
+        const int shotTiming = 200; //発射間隔 
+    }
 
-    private bossState state = bossState.Idle;
-    private Transform targetTransform; //ターゲットの情報
-    private NavMeshAgent navMeshAgent; //NavMeshAgentコンポーネント
     public Animator animator; //Animatorコンポーネント
-    [SerializeField]
-    private PlayableDirector timeline; //PlayableDirectorコンポーネント
-    private Vector3 destination; //目的地の位置情報を格納するためのパラメータ
+    public GameObject bullet; //弾
+    private GameObject player; //playerの情報
+    private Vector3 forPlayer; //playerまでの距離
+    private bossState state; //状態
+    private int nextStateCount; //次の状態に移るまでの時間
+    private bool isMoation = false;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        navMeshAgent = GetComponent<NavMeshAgent>();
-
         //キャラモデルのAnimatorコンポーネントとanimatorを関連付ける
-        animator = this.gameObject.transform.GetChild(0).GetComponent<Animator>();
+        //animator = this.gameObject.transform.GetChild(0).GetComponent<Animator>();
 
-        setState(bossState.Idle); //初期状態をIdle状態に設定する
+        state = bossState.Idle;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (state == bossState.Shot)
+        if (player == null)
         {
-            if (targetTransform == null)
-            {
-                setState(bossState.Idle);
-            }
-            else
-            {
-                SetDestination(targetTransform.position);
-                //navMeshAgent.SetDestination(GetDestination());
-            }
-            //　敵の向きをプレイヤーの方向に少しづつ変える
-            var dir = (GetDestination() - transform.position).normalized;
-            dir.y = 0;
-            Quaternion setRotation = Quaternion.LookRotation(dir);
-            //　算出した方向の角度を敵の角度に設定
-            //transform.rotation = Quaternion.Slerp(transform.rotation, setRotation, navMeshAgent.angularSpeed * 0.1f * Time.deltaTime);
+            player = GameObject.FindGameObjectWithTag("player");
         }
+
+        setForPlayer();
+
+        setState();
+
+        shot();
     }
 
-    public void setState(bossState tempstate, Transform target = null)
+    public void setState()
     {
-        state = tempstate;
-
-        if (tempstate == bossState.Idle)
+        if (isMoation)
         {
-            //navMeshAgent.isStopped = true; //キャラの移動を止める
-            //animator.SetBool("chase", false); //アニメーションコントローラーのフラグ切替（Chase⇒Idle）
+            return;
         }
 
-        if (tempstate == bossState.Shot)
+        //近接
+        if (forPlayer.magnitude <= 100)
         {
-            //targetTransform = targetObject; //ターゲットの情報を更新
-            //navMeshAgent.SetDestination(targetTransform.position); //目的地をターゲットの位置に設定
-            //navMeshAgent.isStopped = false; //キャラを動けるようにする
-            //animator.SetBool("chase", true); //アニメーションコントローラーのフラグ切替（Idle⇒Chase）
+            if (GetState() != bossState.Attack)
+            {
+                return;
+            }
+            state = bossState.Attack;
         }
-
-        if (tempstate == bossState.Attack)
+        //射撃
+        else if (forPlayer.magnitude <= 200)
         {
-            //navMeshAgent.isStopped = true; //キャラの移動を止める
-            //animator.SetBool("chase", false);　//アニメーションコントローラーのフラグ切替（Chase⇒Idle）
-            //timeline.Play();//攻撃用のタイムラインを再生する
-
+            if (GetState() != bossState.Shot)
+            {
+                return;
+            }
+            state = bossState.Shot;
         }
-
-        if (tempstate == bossState.Freeze)
+        else if (forPlayer.magnitude <= 300)
         {
-            Invoke("ResetState", 2.0f);
+
         }
     }
+
     public bossState GetState()
     {
         return state;
     }
-    public void SetDestination(Vector3 position)
+
+    //プレイヤーまでの距離
+    public void setForPlayer()
     {
-        destination = position;
+        forPlayer = player.transform.position - transform.position;
     }
 
-    //　目的地を取得する
-    public Vector3 GetDestination()
+    public void attack()
     {
-        return destination;
+        if (state != bossState.Attack || !isMoation)
+        {
+            return;
+        }
+
+        //専用アニメーション
+    }
+
+    public void shot()
+    {
+        if (state != bossState.Shot || !isMoation)
+        {
+            return;
+        }
+
+        //専用アニメーション
+
+        //弾生成
+        Vector3 pos = transform.position;
+        Vector3 rot = transform.rotation.eulerAngles;
+        rot = new Vector3(rot.y, rot.x, rot.z);
+        Instantiate(bullet, pos, Quaternion.Euler(rot));
+
+        var bulletobject = bullet.GetComponent<bullet_E_CS>();
+
+        Vector3 direction = player.transform.position - transform.position;
+
+        bulletobject.setvec(direction.normalized);
     }
 }
