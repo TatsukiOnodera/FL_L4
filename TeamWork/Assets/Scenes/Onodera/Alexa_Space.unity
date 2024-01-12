@@ -704,6 +704,10 @@ PrefabInstance:
       value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 4458723371330758309, guid: a02ae555c374f3a4a8410f7fed3a2578, type: 3}
+      propertyPath: m_Size.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4458723371330758309, guid: a02ae555c374f3a4a8410f7fed3a2578, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}

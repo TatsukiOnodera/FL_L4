@@ -108,7 +108,7 @@ public class FeverTime : MonoBehaviour
                 rot = new Vector3(rot.y, rot.x, rot.z);
 
                 var bullet = Instantiate(m_bullet, pos, Quaternion.Euler(rot));
-                bullet.transform.localScale = new Vector3(advanceSpeed / 4, advanceSpeed / 4, advanceSpeed / 4);
+                bullet.transform.localScale = new Vector3(advanceSpeed / 3, advanceSpeed / 3, advanceSpeed / 3);
             }
         }
         else
