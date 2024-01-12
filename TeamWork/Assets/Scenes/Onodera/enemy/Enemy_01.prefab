@@ -163,5 +163,5 @@ MonoBehaviour:
   enemyHP: 3
   m_isWalker: 1
   speed: 0.05
-  jumpPower: 1000
+  jumpPower: 1650
   pos: {x: 0, y: 0, z: 0}

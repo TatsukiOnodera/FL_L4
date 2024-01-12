@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class End : MonoBehaviour
 {
+    private bool isEnd = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +18,12 @@ public class End : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SceneManager.LoadScene("Title");
+            isEnd = true;
         }
+    }
+
+    public bool GetIsEnd()
+    {
+        return isEnd;
     }
 }

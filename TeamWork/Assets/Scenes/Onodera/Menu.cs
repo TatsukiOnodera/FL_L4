@@ -11,6 +11,9 @@ public class Menu : MonoBehaviour
     // カーソルのY座標
     public float textY;
 
+    // ステージを選んだか
+    private bool isSelect = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +27,7 @@ public class Menu : MonoBehaviour
         {
             if (textY == 25)
             {
-                SceneManager.LoadScene("stage1");
+                isSelect = true;
             }
             else if (textY == -50)
             {
@@ -57,6 +60,31 @@ public class Menu : MonoBehaviour
             }
 
             selectCursor.anchoredPosition = new Vector2(-100, textY);
+        }
+    }
+
+    public int GetStageNum()
+    {
+        if (isSelect == false)
+        {
+            return 0;
+        }
+
+        if (textY == 25)
+        {
+            return 1;
+        }
+        else if (textY == -50)
+        {
+            return 2;
+        }
+        else if (textY == -125)
+        {
+            return 3;
+        }
+        else
+        {
+            return 1;
         }
     }
 }

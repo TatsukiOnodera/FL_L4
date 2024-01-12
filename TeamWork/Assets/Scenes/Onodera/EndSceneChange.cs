@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class TitleSceneChange : MonoBehaviour
+public class EndSceneChange : MonoBehaviour
 {
     // フェードイン
     [SerializeField] private GameObject m_fadeIn;
     // フェードアウト
     [SerializeField] private GameObject m_fadeOut;
     // タイトルスクリプト
-    [SerializeField] private Title m_title;
+    [SerializeField] private End m_end;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +22,7 @@ public class TitleSceneChange : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (m_title.GetIsChange() == true)
+        if (m_end.GetIsEnd() == true)
         {
             m_fadeOut.SetActive(true);
             m_fadeIn.SetActive(false);
@@ -30,7 +30,7 @@ public class TitleSceneChange : MonoBehaviour
             FadeOut fadeOut = m_fadeOut.GetComponent<FadeOut>();
             if (fadeOut.GetIsEnd() == true)
             {
-                SceneManager.LoadScene("Menu");
+                SceneManager.LoadScene("Title");
             }
         }
     }

@@ -164,7 +164,7 @@ MonoBehaviour:
   enemyHP: 3
   m_isWalker: 0
   speed: 0.05
-  jumpPower: 1000
+  jumpPower: 1650
   pos: {x: 0, y: 0, z: 0}
 --- !u!114 &-4680674266619845313
 MonoBehaviour:
@@ -180,5 +180,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 7262224719552758423, guid: a06081f8d197d3540ba2135a2dcf824d, type: 3}
   player: {fileID: 0}
-  shotTiming: 300
-  shotDistance: 10
+  shotTiming: 240
+  shotDistance: 20

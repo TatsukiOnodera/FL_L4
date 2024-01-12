@@ -4,35 +4,36 @@ using UnityEngine;
 
 public class EnemyShot : MonoBehaviour
 {
-    public GameObject bullet;
+    [SerializeField] private GameObject bullet;
 
-    public GameObject player;
+    [SerializeField] private GameObject player;
+
+    private Enemy m_enemy;
 
     private int count = 0;
-    [SerializeField] private int shotTiming = 800;
+    [SerializeField] private int shotTiming = 600;
 
-    [SerializeField] private int shotDistance = 15;
+    [SerializeField] private int shotDistance = 25;
 
     // Start is called before the first frame update
     void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
     {
         if (player == null)
         {
             player = GameObject.FindGameObjectWithTag("player");
         }
+        m_enemy = GetComponent<Enemy>();
+    }
 
+    // Update is called once per frame
+    void Update()
+    {
         count++;
 
         Vector3 enemyPos = transform.position;
         Vector3 playerPos = player.transform.position;
         float dis = Vector3.Distance(enemyPos, playerPos);
-        if (shotTiming <= count && dis <= shotDistance)
+        if (shotTiming <= count && dis <= shotDistance && m_enemy.GetIsJump() == false)
         {
             shot();
             count = 0;

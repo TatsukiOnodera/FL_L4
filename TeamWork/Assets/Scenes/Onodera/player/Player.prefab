@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.2
-  jumpP: 2000
+  jumpP: 1800
   maxJumpCount: 2
   HP: 3
 --- !u!114 &3845530556176705367

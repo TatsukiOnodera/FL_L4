@@ -28,8 +28,6 @@ public class Enemy : MonoBehaviour
     // リジッドボディ
     private Rigidbody rbody;
 
-    public Vector3 pos;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -51,13 +49,12 @@ public class Enemy : MonoBehaviour
             return;
         }
 
-        pos = GameObject.Find("Player").transform.position;
         rbody = GetComponent<Rigidbody>();
 
         // ジャンプ中なら
         if (m_isJump == true)
         {
-            float playerX = pos.x;
+            float playerX = GameObject.Find("Player").transform.position.x;
             float enemyX = transform.position.x;
             if (playerX < enemyX)
             {
@@ -72,7 +69,7 @@ public class Enemy : MonoBehaviour
         }
 
         // ジャンプできるか
-        if (m_isJump == false && 90 < jumpInterval)
+        if (m_isJump == false && 120 < jumpInterval)
         {
             jumpInterval = 0;
             m_isJump = true;
@@ -106,6 +103,11 @@ public class Enemy : MonoBehaviour
         {
             m_isJump = false;
         }
+    }
+
+    public bool GetIsJump()
+    {
+        return m_isJump;
     }
 
     public void damage()
