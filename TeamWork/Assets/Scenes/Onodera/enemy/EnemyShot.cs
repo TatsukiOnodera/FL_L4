@@ -8,7 +8,7 @@ public class EnemyShot : MonoBehaviour
 
     [SerializeField] private GameObject player;
 
-    private Enemy m_enemy;
+    [SerializeField] private Enemy m_enemy;
 
     private int count = 0;
     [SerializeField] private int shotTiming = 600;
@@ -28,6 +28,11 @@ public class EnemyShot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (player == null)
+        {
+            return;
+        }
+
         count++;
 
         Vector3 enemyPos = transform.position;

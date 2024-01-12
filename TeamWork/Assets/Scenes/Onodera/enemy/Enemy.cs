@@ -76,7 +76,7 @@ public class Enemy : MonoBehaviour
             rbody.AddForce(new Vector3(0, 1, 0) * jumpPower);
 
             rbody = GetComponent<Rigidbody>();
-            float playerX = pos.x;
+            float playerX = GameObject.Find("Player").transform.position.x;
             float enemyX = transform.position.x;
             if (playerX < enemyX)
             {
