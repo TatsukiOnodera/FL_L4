@@ -70,7 +70,7 @@ public class Player : MonoBehaviour
         }
         else if (0 < fever.GetIntervalTimer())
         {
-            position.x += speed;
+            position.x += speed * 0.1f;
             rbody.AddForce(new Vector3(1, 0, 0) * speed);
             rotation = new Vector3(0, 90, 0);
         }
