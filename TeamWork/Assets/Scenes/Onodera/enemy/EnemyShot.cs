@@ -11,7 +11,7 @@ public class EnemyShot : MonoBehaviour
     private int count = 0;
     [SerializeField] private int shotTiming = 800;
 
-    [SerializeField] private int shotDistance = 10;
+    [SerializeField] private int shotDistance = 15;
 
     // Start is called before the first frame update
     void Start()

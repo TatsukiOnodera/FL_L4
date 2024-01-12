@@ -160,9 +160,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86e718d782fc47846b5f89a08779a670, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_player: {fileID: 337156375480317794, guid: a02ae555c374f3a4a8410f7fed3a2578, type: 3}
   enemyHP: 3
   m_isWalker: 1
-  speed: 0.01
-  jumpPower: 2000
+  speed: 0.05
+  jumpPower: 1000
   pos: {x: 0, y: 0, z: 0}
