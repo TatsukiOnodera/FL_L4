@@ -70,9 +70,8 @@ public class Player : MonoBehaviour
         }
         else if (0 < fever.GetIntervalTimer())
         {
-            float num = 0.01f;
-            position.x += num;
-            rbody.AddForce(new Vector3(1, 0, 0) * num);
+            position.x += speed;
+            rbody.AddForce(new Vector3(1, 0, 0) * speed);
             rotation = new Vector3(0, 90, 0);
         }
 
@@ -96,11 +95,7 @@ public class Player : MonoBehaviour
         {
             jumpCount = 0;
         }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("enemy"))
+        if (collision.gameObject.CompareTag("enemy"))
         {
             FeverTime fever = GetComponent<FeverTime>();
             if (0 < fever.GetIntervalTimer())
@@ -108,10 +103,10 @@ public class Player : MonoBehaviour
                 return;
             }
 
-            int num = other.GetComponent<Enemy>().GetHP();
+            int num = collision.gameObject.GetComponent<Enemy>().GetHP();
             for (int i = 0; i < num; i++)
             {
-                other.GetComponent<Enemy>().damage();
+                collision.gameObject.GetComponent<Enemy>().damage();
             }
         }
     }
