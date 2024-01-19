@@ -21,13 +21,16 @@ public class Boss_01_CS : MonoBehaviour
         const int shotTiming = 200; //発射間隔 
     }
 
-    public Animator animator; //Animatorコンポーネント
+    //public Animator animator; //Animatorコンポーネント
     public GameObject bullet; //弾
     private GameObject player; //playerの情報
     private Vector3 forPlayer; //playerまでの距離
     private bossState state; //状態
     private int nextStateCount; //次の状態に移るまでの時間
     private bool isMoation = false;
+    private int shotTime = 0;
+    private int shotCount = 0;
+    private int nextShotCount = 2000;
 
 
     // Start is called before the first frame update
@@ -51,6 +54,8 @@ public class Boss_01_CS : MonoBehaviour
 
         setState();
 
+        attack();
+
         shot();
     }
 
@@ -62,9 +67,10 @@ public class Boss_01_CS : MonoBehaviour
         }
 
         //近接
-        if (forPlayer.magnitude <= 100)
+        if (forPlayer.magnitude <= 5)
         {
-            if (GetState() != bossState.Attack)
+            isMoation = true;
+            if (GetState() == bossState.Attack)
             {
                 return;
             }
@@ -73,7 +79,8 @@ public class Boss_01_CS : MonoBehaviour
         //射撃
         else if (forPlayer.magnitude <= 200)
         {
-            if (GetState() != bossState.Shot)
+            isMoation = true;
+            if (GetState() == bossState.Shot)
             {
                 return;
             }
@@ -116,6 +123,19 @@ public class Boss_01_CS : MonoBehaviour
         //専用アニメーション
 
         //弾生成
+        nextShotCount++;
+        if (nextShotCount < 2000)
+        {
+            return;
+        }
+
+        shotTime++;
+
+        if (shotTime < 100)
+        {
+            return;
+        }
+
         Vector3 pos = transform.position;
         Vector3 rot = transform.rotation.eulerAngles;
         rot = new Vector3(rot.y, rot.x, rot.z);
@@ -126,5 +146,15 @@ public class Boss_01_CS : MonoBehaviour
         Vector3 direction = player.transform.position - transform.position;
 
         bulletobject.setvec(direction.normalized);
+
+        shotTime = 0;
+        shotCount++;
+
+        if (shotCount > 10)
+        {
+            shotCount = 0;
+            nextShotCount = 0;
+            isMoation = false;
+        }
     }
 }

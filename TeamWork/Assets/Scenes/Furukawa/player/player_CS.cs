@@ -16,6 +16,11 @@ public class player_CS : MonoBehaviour
 
     int HP;
 
+    //–³“GŽžŠÔ
+    private int nodamageTime = 0;
+    private bool isAmor = false;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -60,6 +65,16 @@ public class player_CS : MonoBehaviour
         position.z = 0.0f;
         transform.position = position;
         transform.rotation = Quaternion.Euler(rotation);
+
+        //–³“GŽžŠÔ
+        if (isAmor)
+        {
+            nodamageTime++;
+            if (nodamageTime > 200)
+            {
+                isAmor = false;
+            }
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -72,7 +87,13 @@ public class player_CS : MonoBehaviour
 
     public void damage()
     {
+        if (isAmor)
+        {
+            return;
+        }
+
         HP--;
+        isAmor = true;
         if (HP < 0)
         {
             Destroy(this.gameObject);
