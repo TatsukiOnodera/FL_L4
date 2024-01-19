@@ -39,6 +39,12 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // É|Å[ÉYíÜÇÕìÆÇ©Ç»Ç¢
+        if (Time.deltaTime == 0)
+        {
+            return;
+        }
+
         position = transform.position;
 
         FeverTime fever = GetComponent<FeverTime>();
@@ -98,7 +104,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("enemy"))
         {
             FeverTime fever = GetComponent<FeverTime>();
-            if (0 < fever.GetIntervalTimer())
+            if (fever.GetIsBig() == false)
             {
                 return;
             }

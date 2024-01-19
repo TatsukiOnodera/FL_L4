@@ -20,6 +20,12 @@ public class FeverBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // ƒ|[ƒY’†‚Í“®‚©‚È‚¢
+        if (Time.deltaTime == 0)
+        {
+            return;
+        }
+
         Vector3 pos = transform.position;
         Vector3 vec = Vector3.Normalize(transform.rotation.eulerAngles);
         if (transform.rotation.eulerAngles.x >= 270)

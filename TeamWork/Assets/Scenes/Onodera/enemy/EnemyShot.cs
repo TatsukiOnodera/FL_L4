@@ -28,6 +28,12 @@ public class EnemyShot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // É|Å[ÉYíÜÇÕìÆÇ©Ç»Ç¢
+        if (Time.deltaTime == 0)
+        {
+            return;
+        }
+
         if (player == null)
         {
             return;

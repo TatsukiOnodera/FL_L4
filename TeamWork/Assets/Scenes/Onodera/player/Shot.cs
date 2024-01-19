@@ -16,6 +16,12 @@ public class Shot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // É|Å[ÉYíÜÇÕìÆÇ©Ç»Ç¢
+        if (Time.deltaTime == 0)
+        {
+            return;
+        }
+
         FeverTime fever = GetComponent<FeverTime>();
         if (fever.GetIsBig() == true) return;
 

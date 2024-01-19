@@ -9,7 +9,7 @@ public class Menu : MonoBehaviour
     [SerializeField] private RectTransform selectCursor;
 
     // カーソルのY座標
-    public float textY;
+    private float textY;
 
     // ステージを選んだか
     private bool isSelect = false;

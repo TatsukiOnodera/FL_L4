@@ -37,6 +37,12 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // ƒ|[ƒY’†‚Í“®‚©‚È‚¢
+        if (Time.deltaTime == 0)
+        {
+            return;
+        }
+
         // HP‚ª0‚È‚ç
         if (enemyHP <= 0)
         {

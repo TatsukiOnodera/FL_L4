@@ -44,6 +44,12 @@ public class FeverTime : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // ƒ|[ƒY’†‚Í“®‚©‚È‚¢
+        if (Time.deltaTime == 0)
+        {
+            return;
+        }
+
         // ‹‘å‰»‚·‚é‚©
         BeBig();
 
