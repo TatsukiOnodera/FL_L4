@@ -29,12 +29,7 @@ public class EnemyShot : MonoBehaviour
     void Update()
     {
         // É|Å[ÉYíÜÇÕìÆÇ©Ç»Ç¢
-        if (Time.deltaTime == 0)
-        {
-            return;
-        }
-
-        if (player == null)
+        if (Time.deltaTime == 0 || player == null)
         {
             return;
         }

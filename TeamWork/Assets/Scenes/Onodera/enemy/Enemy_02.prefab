@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 7262224719552758423, guid: a06081f8d197d3540ba2135a2dcf824d, type: 3}
-  player: {fileID: 0}
+  player: {fileID: 337156375480317794, guid: a02ae555c374f3a4a8410f7fed3a2578, type: 3}
   m_enemy: {fileID: -1814776484464701301}
   shotTiming: 150
   shotDistance: 20
