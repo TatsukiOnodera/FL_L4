@@ -13,6 +13,8 @@ public class StageSceneChange : MonoBehaviour
     private Goal m_goal;
     // ポーズオブジェクト
     private Pause m_pause;
+    // 落下したか
+    private bool m_isFall;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +23,7 @@ public class StageSceneChange : MonoBehaviour
         GameObject obj = GameObject.Find("Goal");
         m_goal = obj.GetComponent<Goal>();
         m_pause = GetComponent<Pause>();
+        m_isFall = false;
 
         // フェードイン開始
         m_fadeIn.SetActive(true);
@@ -31,7 +34,7 @@ public class StageSceneChange : MonoBehaviour
     void Update()
     {
         // ステージが変わるときか
-        if (m_goal.GetIsGoal() == true || m_pause.BackMenu() == true)
+        if (m_goal.GetIsGoal() == true || m_pause.BackMenu() == true || m_isFall == true)
         {
             // フェードアウト開始
             m_fadeOut.SetActive(true);
@@ -47,6 +50,10 @@ public class StageSceneChange : MonoBehaviour
                     m_pause.ResetPause();
                     SceneManager.LoadScene("Menu");
                 }
+                else if (m_isFall == true)
+                {
+                    SceneManager.LoadScene("GameOver");
+                }
                 else
                 {
                     // 次のシーンに移行する
@@ -61,5 +68,13 @@ public class StageSceneChange : MonoBehaviour
                 }
             }
         }
+    }
+
+    /// <summary>
+    /// プレイヤーが落ちた
+    /// </summary>
+    public void GetIsFall()
+    {
+        m_isFall = true;
     }
 }

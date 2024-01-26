@@ -87,7 +87,9 @@ public class Player : MonoBehaviour
 
         if (position.y < -5.5)
         {
-            SceneManager.LoadScene("GameOver");
+            GameObject obj = GameObject.Find("Scene");
+            StageSceneChange scene = obj.GetComponent<StageSceneChange>();
+            scene.GetIsFall();
         }
     }
 
