@@ -141,7 +141,7 @@ public class Boss_01_CS : MonoBehaviour
         rot = new Vector3(rot.y, rot.x, rot.z);
         Instantiate(bullet, pos, Quaternion.Euler(rot));
 
-        var bulletobject = bullet.GetComponent<bullet_E_CS>();
+        var bulletobject = bullet.GetComponent<bullet_E_SC>();
 
         Vector3 direction = player.transform.position - transform.position;
 

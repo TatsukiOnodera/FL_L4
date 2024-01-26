@@ -39,7 +39,7 @@ public class bullet_SC : MonoBehaviour
     {
         if (other.gameObject.tag == "enemy")
         {
-            other.GetComponent<enemy_CS>().damage();
+            other.GetComponent<enemy_SC>().damage();
             Destroy(this.gameObject);
         }
     }
