@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FloorToon_MT
+  m_Name: Floor_MT
   m_Shader: {fileID: 4800000, guid: 09c481afbd3a3b2449ea3b9ed03856e0, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0

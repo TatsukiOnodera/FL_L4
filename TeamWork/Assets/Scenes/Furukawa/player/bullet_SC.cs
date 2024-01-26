@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class bullet_CS : MonoBehaviour
+public class bullet_SC : MonoBehaviour
 {
     int count = 0;
     float speed = 0.07f;

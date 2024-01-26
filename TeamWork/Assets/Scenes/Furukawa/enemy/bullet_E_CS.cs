@@ -40,7 +40,7 @@ public class bullet_E_CS : MonoBehaviour
     {
         if (other.gameObject.tag == "player")
         {
-            other.GetComponent<player_CS>().damage();
+            other.GetComponent<player_SC>().damage();
             Destroy(this.gameObject);
         }
     }

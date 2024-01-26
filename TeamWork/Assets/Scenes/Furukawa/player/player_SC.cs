@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class player_CS : MonoBehaviour
+public class player_SC : MonoBehaviour
 {
     public float speed = 0.01f;   // ‰¡‚ÉˆÚ“®‚·‚é‘¬“x
     public float jumpP = 2000f; // ƒWƒƒƒ“ƒv—Í
