@@ -40,8 +40,12 @@ public class bullet_E_SC : MonoBehaviour
     {
         if (other.gameObject.tag == "player")
         {
-            other.GetComponent<player_SC>().damage();
             Destroy(this.gameObject);
+            if (other.GetComponent<player_SC>().getHP() == 0)
+            {
+                return;
+            }
+            other.GetComponent<player_SC>().damage();
         }
     }
 }
