@@ -37,7 +37,7 @@ public class bullet_SC : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "enemy")
+        if (other.gameObject.tag == "enemy" || other.gameObject.tag == "boss")
         {
             other.GetComponent<enemy_SC>().damage();
             Destroy(this.gameObject);

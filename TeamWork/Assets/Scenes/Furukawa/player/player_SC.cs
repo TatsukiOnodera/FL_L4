@@ -17,7 +17,11 @@ public class player_SC : MonoBehaviour
     int HP;
 
     private Animator anim = null;
-    private AnimatorStateInfo deathState;
+    private AnimatorStateInfo animState;
+
+    //無敵時間
+    private int nodamageTime = 0;
+    private bool isAmor = true;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +41,7 @@ public class player_SC : MonoBehaviour
     {
         position = transform.position;
         anim.SetBool("run", false);
-        deathState = anim.GetCurrentAnimatorStateInfo(1);
+        animState = anim.GetCurrentAnimatorStateInfo(0);
 
         // ジャンプをするためのコード（もしスペースキーが押されて、上方向に速度がない時に）
         if (Input.GetKey(KeyCode.A) || Input.GetAxis("L_Stick_H") < 0)
@@ -70,14 +74,24 @@ public class player_SC : MonoBehaviour
         transform.position = position;
         transform.rotation = Quaternion.Euler(rotation);
 
-
-        //HPが0になったら死亡
-        if (HP == 0 && deathState.normalizedTime <= 0)
+        //無敵時間
+        if (isAmor)
         {
-            anim.SetBool("death", true);
+            nodamageTime++;
+            if (nodamageTime > 1000)
+            {
+                //isAmor = false;
+            }
         }
 
-        if (deathState.normalizedTime > 2.0f)
+        //HPが0になったら死亡
+        if (HP == 0 && !anim.GetBool("death"))
+        {
+            anim.SetBool("death", true);
+            speed = 0.0f;
+        }
+        
+        if (animState.IsName("metarig|dead 0") && animState.normalizedTime >= 1.5f)
         {
             Destroy(this.gameObject);
         }
@@ -94,7 +108,14 @@ public class player_SC : MonoBehaviour
 
     public void damage()
     {
+        if (isAmor)
+        {
+            return;
+        }
+
         HP--;
+        isAmor = true;
+
         if (HP < 0)
         {
             anim.SetBool("death", true);

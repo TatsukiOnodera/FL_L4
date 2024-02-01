@@ -15,31 +15,38 @@ public class Boss_01_CS : MonoBehaviour
         Attack, //近接
     };
 
-    public struct shotManager
-    {
-        int shotCount; //発射間隔カウント
-        const int shotTiming = 200; //発射間隔 
-    }
-
     //public Animator animator; //Animatorコンポーネント
     public GameObject bullet; //弾
+
+    private int maxIdleAnimationCount = 2;
     private GameObject player; //playerの情報
     private Vector3 forPlayer; //playerまでの距離
+    private Vector3 rotation;
     private bossState state; //状態
-    private int nextStateCount; //次の状態に移るまでの時間
     private bool isMoation = false;
     private int shotTime = 0;
-    private int shotCount = 0;
-    private int nextShotCount = 2000;
+    private int idleAnimationCount = 0;
+    private CapsuleCollider bossCollider;
+    private Vector3 baceColliderPos;
+    private Vector3 setColliderPos;
+
+    private Animator anim = null;
+    private AnimatorStateInfo animState;
 
 
     // Start is called before the first frame update
     void Start()
     {
         //キャラモデルのAnimatorコンポーネントとanimatorを関連付ける
-        //animator = this.gameObject.transform.GetChild(0).GetComponent<Animator>();
+        anim = GetComponent<Animator>();
+
+        bossCollider = GetComponent<CapsuleCollider>();
+
+        setColliderPos = new Vector3(0, 0, 1.0f);
 
         state = bossState.Idle;
+        rotation = new Vector3(0, -90, 0);
+        transform.rotation = Quaternion.Euler(rotation);
     }
 
     // Update is called once per frame
@@ -50,12 +57,41 @@ public class Boss_01_CS : MonoBehaviour
             player = GameObject.FindGameObjectWithTag("player");
         }
 
+        //プレイヤーとの距離
         setForPlayer();
 
+        animState = anim.GetCurrentAnimatorStateInfo(0);
+
+        //死亡処理
+        if (anim.GetBool("death"))
+        {
+            isMoation = false;
+
+            if (animState.normalizedTime >= 1.3f)
+            {
+                Destroy(this.gameObject);
+            }
+
+            return;
+        }
+
+        if (animState.IsName("アーマチュア|idol") && animState.normalizedTime >= 1.0f && !isMoation)
+        {
+            idleAnimationCount++;
+        }
+
+        if (idleAnimationCount < maxIdleAnimationCount && !isMoation)
+        {
+            return;
+        }
+
+        //行動セット
         setState();
 
+        //近接
         attack();
 
+        //射撃
         shot();
     }
 
@@ -67,7 +103,7 @@ public class Boss_01_CS : MonoBehaviour
         }
 
         //近接
-        if (forPlayer.magnitude <= 5)
+        if (forPlayer.magnitude <= 7)
         {
             isMoation = true;
             if (GetState() == bossState.Attack)
@@ -75,6 +111,10 @@ public class Boss_01_CS : MonoBehaviour
                 return;
             }
             state = bossState.Attack;
+            baceColliderPos = bossCollider.center;
+            bossCollider.center = setColliderPos;
+            anim.SetBool("attack", true);
+            idleAnimationCount = 0;
         }
         //射撃
         else if (forPlayer.magnitude <= 200)
@@ -85,10 +125,8 @@ public class Boss_01_CS : MonoBehaviour
                 return;
             }
             state = bossState.Shot;
-        }
-        else if (forPlayer.magnitude <= 300)
-        {
-
+            anim.SetBool("shot", true);
+            idleAnimationCount = 0;
         }
     }
 
@@ -111,6 +149,14 @@ public class Boss_01_CS : MonoBehaviour
         }
 
         //専用アニメーション
+
+        if (animState.normalizedTime >= 1.0f)
+        {
+            bossCollider.center = baceColliderPos;
+            isMoation = false;
+            state = bossState.Idle;
+            anim.SetBool("attack", false);
+        }
     }
 
     public void shot()
@@ -123,15 +169,9 @@ public class Boss_01_CS : MonoBehaviour
         //専用アニメーション
 
         //弾生成
-        nextShotCount++;
-        if (nextShotCount < 2000)
-        {
-            return;
-        }
-
         shotTime++;
 
-        if (shotTime < 100)
+        if (shotTime < 200)
         {
             return;
         }
@@ -148,13 +188,29 @@ public class Boss_01_CS : MonoBehaviour
         bulletobject.setvec(direction.normalized);
 
         shotTime = 0;
-        shotCount++;
 
-        if (shotCount > 10)
+        if (animState.normalizedTime >= 1.0f)
         {
-            shotCount = 0;
-            nextShotCount = 0;
             isMoation = false;
+            state = bossState.Idle;
+            anim.SetBool("shot", false);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (state != bossState.Attack)
+        {
+            return;
+        }
+
+        if (other.gameObject.tag == "player")
+        {
+            if (other.GetComponent<player_SC>().getHP() == 0)
+            {
+                return;
+            }
+            other.GetComponent<player_SC>().damage();
         }
     }
 }

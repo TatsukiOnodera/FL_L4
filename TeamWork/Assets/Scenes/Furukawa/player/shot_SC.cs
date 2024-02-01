@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class shot_SC : MonoBehaviour
 {
     public GameObject bullet;
 
+    private GameObject player = null;
     Quaternion rot;
 
     private Animator anim = null;
@@ -14,7 +16,12 @@ public class shot_SC : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        anim = GetComponent<Animator>();
+        if (player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("player");
+        }
+
+        anim = player.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -25,6 +32,11 @@ public class shot_SC : MonoBehaviour
         if (state.normalizedTime > 1.0f)
         {
             anim.SetBool("shot", false);
+        }
+
+        if(state.IsName("metarig|dead 0"))
+        {
+            return;
         }
 
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 1"))

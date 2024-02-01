@@ -8,6 +8,7 @@ TagManager:
   - bullet
   - enemy
   - player
+  - boss
   layers:
   - Default
   - TransparentFX
