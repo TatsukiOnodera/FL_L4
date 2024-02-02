@@ -43,7 +43,7 @@ public class player_SC : MonoBehaviour
         rotation = new Vector3(0, 90, 0);
         jumpCount = 0;
         nodamageTime = 0;
-        isAmor = true;
+        isAmor = false;
     }
 
     // Update is called once per frame
@@ -102,7 +102,7 @@ public class player_SC : MonoBehaviour
         if (isAmor)
         {
             nodamageTime++;
-            if (nodamageTime > 1000)
+            if (nodamageTime > 180)
             {
                 isAmor = false;
             }

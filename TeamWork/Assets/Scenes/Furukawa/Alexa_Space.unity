@@ -316,7 +316,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -3625093282446478727, guid: 698f23ab6523efd408119d7a06458e19, type: 3}
       propertyPath: HP
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -3625093282446478727, guid: 698f23ab6523efd408119d7a06458e19, type: 3}
       propertyPath: jumpP

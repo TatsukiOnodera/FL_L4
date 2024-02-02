@@ -32,13 +32,25 @@ public class FeverTime : MonoBehaviour
     // 巨大化状態
     private bool m_isBig = false;
 
+    // アニメーション
+    private Animator anim = null;
+    private AnimatorStateInfo state;
+
+    // オブジェクト
+    private GameObject player = null;
+
     /*メンバ関数*/
     // Start is called before the first frame update
     void Start()
     {
+        if (player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("player");
+        }
         m_isBigTimer = m_limitBigTime;
         m_intervalTimer = 0;
         m_isBig = false;
+        anim = player.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -49,6 +61,8 @@ public class FeverTime : MonoBehaviour
         {
             return;
         }
+
+        state = anim.GetCurrentAnimatorStateInfo(0);
 
         // 巨大化するか
         BeBig();
@@ -84,9 +98,9 @@ public class FeverTime : MonoBehaviour
         // フィーバーゲージがたまっていないか
         if (m_limitFeverGauge <= m_feverGauge && Input.GetKeyDown(KeyCode.V) && m_isBig == false)
         {
-            if (m_player.transform.localScale.x != 5.0f)
+            if (m_player.transform.localScale.x != 0.5f)
             {
-                m_player.transform.Translate(0, 3.0f, 0);
+                m_player.transform.Translate(0, 2.0f, 0);
             }
             m_player.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
             m_isBig = true;
@@ -98,17 +112,24 @@ public class FeverTime : MonoBehaviour
     /// </summary>
     private void IsBigShot()
     {
+        if (state.IsName("metarig|dead 0"))
+        {
+            return;
+        }
+
         // 間隔があいているか
         if (m_intervalTimer <= 0)
         {
             // マイクに音が入っているか
             if (0 < GetMikeVolume())
             {
+                anim.SetBool("shot", false);
                 m_intervalTimer = m_limitShotInterval;
 
                 Vector3 pos = m_player.transform.position;
                 float advanceSpeed = GetMikeVolume();
                 pos.x += advanceSpeed / 8 + 0.5f * m_player.transform.localScale.x;
+                pos.y += 3.0f;
 
                 Vector3 rot = transform.rotation.eulerAngles;
                 rot = new Vector3(rot.y, rot.x, rot.z);
