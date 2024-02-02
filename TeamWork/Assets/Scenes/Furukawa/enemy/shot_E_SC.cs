@@ -4,30 +4,47 @@ using UnityEngine;
 
 public class shot_E_SC : MonoBehaviour
 {
-    public GameObject bullet;
+    // オブジェクト
+    [SerializeField] private GameObject bullet;
+    [SerializeField] private GameObject player;
 
-    private GameObject player;
+    // エネミークラス
+    [SerializeField] private enemy_SC m_enemy;
 
-    int count = 0;
-    const int shotTiming = 800;
+    // 発射のタイミング
+    [SerializeField] private int shotTiming = 600;
+
+    // 発射範囲
+    [SerializeField] private int shotDistance = 25;
+
+    // 発射のインターバル
+    private int count = 0;
 
     // Start is called before the first frame update
     void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
     {
         if (player == null)
         {
             player = GameObject.FindGameObjectWithTag("player");
         }
+        m_enemy = GetComponent<enemy_SC>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        // ポーズ中は動かない
+        if (Time.deltaTime == 0 || player == null)
+        {
+            return;
+        }
 
         count++;
 
-        if(count == shotTiming)
+        Vector3 enemyPos = transform.position;
+        Vector3 playerPos = player.transform.position;
+        float dis = Vector3.Distance(enemyPos, playerPos);
+        if (shotTiming <= count && dis <= shotDistance && m_enemy.GetIsJump() == false)
         {
             shot();
             count = 0;

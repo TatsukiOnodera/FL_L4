@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &512357518483212499
+--- !u!1 &2310256689319788467
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,51 +8,51 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2363483439095349496}
-  - component: {fileID: 479300351159465718}
-  - component: {fileID: 406195576496653109}
-  - component: {fileID: 3924012964964144894}
-  - component: {fileID: -7948747288770069750}
-  - component: {fileID: 864245635419765673}
-  - component: {fileID: -8722750137492969333}
-  - component: {fileID: 1534958573452649795}
+  - component: {fileID: 4204518834141450162}
+  - component: {fileID: 3842602501831726627}
+  - component: {fileID: 4576055024792255697}
+  - component: {fileID: 8776780247026591286}
+  - component: {fileID: -3543492981070156418}
+  - component: {fileID: -6718221381613660087}
+  - component: {fileID: -5567519711266358523}
+  - component: {fileID: 3243312868279960731}
   m_Layer: 0
-  m_Name: enemy_02
-  m_TagString: enemy
+  m_Name: Boss_01_cube
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2363483439095349496
+--- !u!4 &4204518834141450162
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 512357518483212499}
+  m_GameObject: {fileID: 2310256689319788467}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.230597, y: 1.262016, z: 1.9347298}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 4.2, y: 0.2, z: 0}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &479300351159465718
+--- !u!33 &3842602501831726627
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 512357518483212499}
+  m_GameObject: {fileID: 2310256689319788467}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &406195576496653109
+--- !u!23 &4576055024792255697
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 512357518483212499}
+  m_GameObject: {fileID: 2310256689319788467}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7d25b160fcce0b848948c52be6ee2216, type: 2}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -88,13 +88,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3924012964964144894
+--- !u!65 &8776780247026591286
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 512357518483212499}
+  m_GameObject: {fileID: 2310256689319788467}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -109,13 +109,13 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &-7948747288770069750
+--- !u!54 &-3543492981070156418
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 512357518483212499}
+  m_GameObject: {fileID: 2310256689319788467}
   serializedVersion: 4
   m_Mass: 3
   m_Drag: 0
@@ -136,49 +136,42 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &864245635419765673
+--- !u!114 &-6718221381613660087
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 512357518483212499}
+  m_GameObject: {fileID: 2310256689319788467}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86f3d543429502f47828783b5561d5ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   localGravity: {x: 0, y: -30, z: 0}
---- !u!114 &-8722750137492969333
+--- !u!114 &-5567519711266358523
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 512357518483212499}
+  m_GameObject: {fileID: 2310256689319788467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0731a774cef02124ba9336fd166ca00d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 7262224719552758423, guid: 9e2594fc03edda5419a37346734c7d15, type: 3}
+--- !u!114 &3243312868279960731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2310256689319788467}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 44f934008b2a54d4eb915a12ededd03d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHP: 3
-  m_isWalker: 1
-  speed: 0.05
-  jumpPower: 1650
---- !u!114 &1534958573452649795
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 512357518483212499}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea019e24e14db5b4392e0b47c0c9c930, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bullet: {fileID: 7262224719552758423, guid: 688e785cd7302ca44816c1942a5fced1, type: 3}
-  player: {fileID: 6844592480864848728, guid: 698f23ab6523efd408119d7a06458e19, type: 3}
-  m_enemy: {fileID: -8722750137492969333}
-  shotTiming: 160
-  shotDistance: 14
+  enemyHP: 20

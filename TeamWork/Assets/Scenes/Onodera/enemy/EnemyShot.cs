@@ -10,6 +10,8 @@ public class EnemyShot : MonoBehaviour
 
     [SerializeField] private Enemy m_enemy;
 
+    [SerializeField] private float m_speed;
+
     private int count = 0;
     [SerializeField] private int shotTiming = 600;
 
@@ -57,6 +59,6 @@ public class EnemyShot : MonoBehaviour
 
         Vector3 direction = player.transform.position - transform.position;
 
-        bulletobject.setvec(direction.normalized);
+        bulletobject.setvec(direction.normalized * m_speed);
     }
 }

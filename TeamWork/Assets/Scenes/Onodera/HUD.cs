@@ -11,7 +11,7 @@ public class HUD : MonoBehaviour
     [SerializeField] private RectTransform FeverGauge;
 
     // プレイヤーのコンポーネント
-    private Player m_player;
+    private player_SC m_player;
 
     // フィーバーゲージのコンポーネント
     private FeverTime m_feverTime;
@@ -29,18 +29,18 @@ public class HUD : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject obj = GameObject.Find("Player");
-        m_player = obj.GetComponent<Player>();
+        GameObject obj = GameObject.Find("player_model");
+        m_player = obj.GetComponent<player_SC>();
         m_feverTime = obj.GetComponent<FeverTime>();
 
-        m_maxHP = m_player.GetHP();
+        m_maxHP = m_player.getHP();
         m_width = HPGauge.rect.width;
     }
 
     // Update is called once per frame
     void Update()
     {
-        nowHP = m_player.GetHP();
+        nowHP = m_player.getHP();
         HPGauge.sizeDelta = new Vector2((m_width / (float)m_maxHP) * nowHP, HPGauge.rect.height);
 
         nowFever = m_feverTime.GetFeverGauge();

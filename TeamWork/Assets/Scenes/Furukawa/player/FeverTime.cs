@@ -86,9 +86,9 @@ public class FeverTime : MonoBehaviour
         {
             if (m_player.transform.localScale.x != 5.0f)
             {
-                m_player.transform.Translate(0, 2.5f, 0);
+                m_player.transform.Translate(0, 3.0f, 0);
             }
-            m_player.transform.localScale = new Vector3(5, 5, 5);
+            m_player.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
             m_isBig = true;
         }
     }
@@ -134,7 +134,7 @@ public class FeverTime : MonoBehaviour
             m_isBigTimer = m_limitBigTime;
             m_intervalTimer = 0;
             m_feverGauge = 0;
-            m_player.transform.localScale = new Vector3(1, 1, 1);
+            m_player.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
             m_isBig = false;
         }
         else

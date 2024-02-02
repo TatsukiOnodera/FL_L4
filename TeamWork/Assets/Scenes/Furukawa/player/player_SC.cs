@@ -1,81 +1,202 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class player_SC : MonoBehaviour
 {
-    public float speed = 0.01f;   // 横に移動する速度
-    public float jumpP = 2000f; // ジャンプ力
-    public int maxJumpCount = 1;
+    // 横に移動する速度
+    [SerializeField] private float speed = 0.01f;
+    // ジャンプ力
+    [SerializeField] private float jumpP = 2000f;
+    // ジャンプ可能な回数
+    [SerializeField] private int maxJumpCount = 1;
 
-    Rigidbody rbody; // リジッドボディを使うための宣言
+    // リジッドボディを使うための宣言
+    Rigidbody rbody;
     Vector3 position;
     Vector3 rotation;
 
-    int jumpCount;
+    // ジャンプのカウンター
+    private int jumpCount;
 
-    int HP;
+    // HP
+    [SerializeField] private int HP = 3;
+
+    // アニメーション
+    private Animator anim = null;
+    private AnimatorStateInfo animState;
+
+    //無敵時間
+    private int nodamageTime;
+    private bool isAmor;
 
     // Start is called before the first frame update
     void Start()
     {
         // リジッドボディ2Dをコンポーネントから取得して変数に入れる
         rbody = GetComponent<Rigidbody>();
+        //初期化
+        anim = GetComponent<Animator>();
         position = transform.position;
         transform.rotation = Quaternion.identity;
         rotation = new Vector3(0, 90, 0);
         jumpCount = 0;
-        HP = 3;
+        nodamageTime = 0;
+        isAmor = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        // ポーズ中は動かない
+        if (Time.deltaTime == 0)
+        {
+            return;
+        }
+
+        // 座標取得
         position = transform.position;
+        // アニメーション
+        anim.SetBool("run", false);
+        animState = anim.GetCurrentAnimatorStateInfo(0);
 
-        // ジャンプをするためのコード（もしスペースキーが押されて、上方向に速度がない時に）
-        if (Input.GetKey(KeyCode.A))
+        FeverTime fever = GetComponent<FeverTime>();
+        if (fever.GetIsBig() == false)
         {
-            // リジッドボディに力を加える（上方向にジャンプ力をかける）
-            rbody.AddForce(new Vector3(-1, 0, 0) * speed);
-            position.x -= speed;
-            rotation = new Vector3(0, -90, 0);
+            // ジャンプをするためのコード（もしスペースキーが押されて、上方向に速度がない時に）
+            if (Input.GetKey(KeyCode.A) || Input.GetAxis("L_Stick_H") < 0)
+            {
+                rbody.AddForce(new Vector3(-1, 0, 0) * speed);
+                position.x -= speed;
+                rotation = new Vector3(0, -90, 0);
+                anim.SetBool("run", true);
+            }
+            else if (Input.GetKey(KeyCode.D) || Input.GetAxis("L_Stick_H") > 0)
+            {
+                rbody.AddForce(new Vector3(1, 0, 0) * speed);
+                position.x += speed;
+                rotation = new Vector3(0, 90, 0);
+                anim.SetBool("run", true);
+            }
+            if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown("joystick button 0")) && jumpCount < maxJumpCount)
+            {
+                anim.SetBool("jump", true);
+                // リジッドボディに力を加える（上方向にジャンプ力をかける）
+                rbody.AddForce(new Vector3(0, 1, 0) * jumpP);
+                jumpCount++;
+            }
         }
-
-        if (Input.GetKey(KeyCode.D))
+        else if (0 < fever.GetIntervalTimer())
         {
-            // リジッドボディに力を加える（上方向にジャンプ力をかける）
+            position.x += speed * 0.1f;
             rbody.AddForce(new Vector3(1, 0, 0) * speed);
-            position.x += speed;
             rotation = new Vector3(0, 90, 0);
-        }
-
-        if (Input.GetKeyDown(KeyCode.W) && jumpCount < maxJumpCount)
-        {
-            // リジッドボディに力を加える（上方向にジャンプ力をかける）
-            rbody.AddForce(new Vector3(0, 1, 0) * jumpP);
-            jumpCount++;
         }
 
         position.z = 0.0f;
         transform.position = position;
         transform.rotation = Quaternion.Euler(rotation);
+
+        //無敵時間
+        if (isAmor)
+        {
+            nodamageTime++;
+            if (nodamageTime > 1000)
+            {
+                isAmor = false;
+            }
+        }
+
+        //HPが0になったら死亡
+        if (HP == 0 && !anim.GetBool("death"))
+        {
+            anim.SetBool("death", true);
+            speed = 0.0f;
+        }
+        if (animState.IsName("metarig|dead 0") && animState.normalizedTime >= 1.5f)
+        {
+            Destroy(this.gameObject);
+            SceneManager.LoadScene("GameOver");
+        }
+
+        // 落下したとき
+        if (position.y < -5.5)
+        {
+            GameObject obj = GameObject.Find("Scene");
+            StageSceneChange scene = obj.GetComponent<StageSceneChange>();
+            scene.GetIsFall();
+        }
     }
 
+    /// <summary>
+    /// 当たり判定
+    /// </summary>
+    /// <param name="collision">Collision</param>
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("floor"))
         {
             jumpCount = 0;
+            anim.SetBool("jump", false);
+        }
+        if (collision.gameObject.CompareTag("enemy"))
+        {
+            FeverTime fever = GetComponent<FeverTime>();
+            if (fever.GetIsBig() == false)
+            {
+                return;
+            }
+
+            int num = collision.gameObject.GetComponent<enemy_SC>().GetHP();
+            for (int i = 0; i < num; i++)
+            {
+                collision.gameObject.GetComponent<enemy_SC>().damage();
+            }
         }
     }
 
+    /// <summary>
+    /// ダメージ処理
+    /// </summary>
     public void damage()
     {
-        HP--;
-        if (HP < 0)
+        if (isAmor)
         {
-            Destroy(this.gameObject);
+            return;
+        }
+
+        HP--;
+        isAmor = true;
+
+        if (HP <= 0)
+        {
+            anim.SetBool("death", true);
+        }
+    }
+
+    /// <summary>
+    /// HPを取得
+    /// </summary>
+    /// <returns>int</returns>
+    public int getHP()
+    {
+        return HP;
+    }
+
+    /// <summary>
+    /// 生死フラグを取得
+    /// </summary>
+    /// <returns>bool</returns>
+    public bool GetIsAlive()
+    {
+        if (0 < HP)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }

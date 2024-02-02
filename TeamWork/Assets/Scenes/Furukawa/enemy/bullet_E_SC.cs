@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class bullet_E_SC : MonoBehaviour
 {
-    int count = 0;
-    float speed = 0.009f;
-    public Vector3 vec = Vector3.zero;
+    // 発射インターバル
+    private int count = 0;
+
+    // 弾速
+    [SerializeField] private float speed = 1;
+
+    // ベクトル
+    [SerializeField] private Vector3 vec = Vector3.zero;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +22,12 @@ public class bullet_E_SC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // ポーズ中は動かない
+        if (Time.deltaTime == 0)
+        {
+            return;
+        }
+
         Vector3 pos = transform.position;
 
         pos += vec * speed;
@@ -25,7 +36,7 @@ public class bullet_E_SC : MonoBehaviour
 
         count++;
 
-        if (count >= 1500)
+        if (count >= 300)
         {
             Destroy(this.gameObject);
         }
@@ -40,7 +51,15 @@ public class bullet_E_SC : MonoBehaviour
     {
         if (other.gameObject.tag == "player")
         {
-            other.GetComponent<player_SC>().damage();
+            Destroy(this.gameObject);
+            FeverTime m_feverTime = other.GetComponent<FeverTime>();
+            if (m_feverTime.GetIsBig() == false)
+            {
+                other.GetComponent<player_SC>().damage();
+            }
+        }
+        if (other.gameObject.tag == "floor")
+        {
             Destroy(this.gameObject);
         }
     }

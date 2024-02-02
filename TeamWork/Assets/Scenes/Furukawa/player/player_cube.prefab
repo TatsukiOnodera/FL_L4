@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7235888710537867712}
   - component: {fileID: 4655012032620146769}
   m_Layer: 0
-  m_Name: player
+  m_Name: player_cube
   m_TagString: player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 80e2000dcc8a5884aad2773af5426df3, type: 2}
+  - {fileID: 2100000, guid: b2ce33c873bc47844ab2a24b2398aeb5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -150,7 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.015
   jumpP: 2000
-  maxJumpCount: 2
+  maxJumpCount: 1
 --- !u!114 &7235888710537867712
 MonoBehaviour:
   m_ObjectHideFlags: 0

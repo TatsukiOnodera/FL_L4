@@ -4,18 +4,26 @@ using UnityEngine;
 
 public class bullet_SC : MonoBehaviour
 {
-    int count = 0;
-    float speed = 0.07f;
+    // カウンター
+    private int count = 0;
+    // 弾速
+    [SerializeField] private float speed = 0.07f;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        count = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
+        // ポーズ中は動かない
+        if (Time.deltaTime == 0)
+        {
+            return;
+        }
+
         Vector3 pos = transform.position;
         Vector3 vec = Vector3.Normalize(transform.rotation.eulerAngles);
         if (transform.rotation.eulerAngles.x >= 270)
@@ -29,7 +37,7 @@ public class bullet_SC : MonoBehaviour
 
         count++;
 
-        if (count >= 140)
+        if (count >= 200)
         {
             Destroy(this.gameObject);
         }
@@ -37,10 +45,13 @@ public class bullet_SC : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "enemy")
+        if (other.gameObject.tag == "enemy" || other.gameObject.tag == "boss")
         {
             other.GetComponent<enemy_SC>().damage();
             Destroy(this.gameObject);
+            GameObject obj = GameObject.Find("player_model");
+            FeverTime fever = obj.GetComponent<FeverTime>();
+            fever.UpFeverGauge();
         }
     }
 }

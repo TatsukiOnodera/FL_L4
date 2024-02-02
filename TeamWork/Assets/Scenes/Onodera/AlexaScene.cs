@@ -10,7 +10,7 @@ public class AlexaScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject obj = GameObject.Find("Player");
+        GameObject obj = GameObject.Find("player_model");
         m_fever = obj.GetComponent<FeverTime>();
         Application.targetFrameRate = 60;
         int num = m_fever.GetLimitFeverGauge();

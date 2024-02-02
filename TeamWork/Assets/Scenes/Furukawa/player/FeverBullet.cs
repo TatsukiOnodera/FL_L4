@@ -5,7 +5,7 @@ using UnityEngine;
 public class FeverBullet : MonoBehaviour
 {
     // カウンター
-    int count = 0;
+    private int count = 0;
     // 弾速
     [SerializeField] private float speed = 1.0f;
     // 威力
@@ -39,7 +39,7 @@ public class FeverBullet : MonoBehaviour
 
         count++;
 
-        if (count >= 240)
+        if (count >= 120)
         {
             Destroy(this.gameObject);
         }
@@ -51,7 +51,7 @@ public class FeverBullet : MonoBehaviour
         {
             for (int i = 0; i < damage; i++)
             {
-                other.GetComponent<Enemy>().damage();
+                other.GetComponent<enemy_SC>().damage();
             }
         }
     }
