@@ -23,7 +23,6 @@ public class fall_E_SC : MonoBehaviour
     private int moveCount = 0;
     //ìÀêi
     private bool isAttack = false;
-    private Vector3 goalPos;
 
     // Start is called before the first frame update
     void Start()
@@ -67,21 +66,18 @@ public class fall_E_SC : MonoBehaviour
             if (forPlayerX <= 10.0f)
             {
                 myState = enemyState.fall;
-                goalPos = player.transform.position;
             }
         }
         else if (myState == enemyState.fall)
         {
             if (isAttack)
             {
-                if (transform.position != goalPos)
-                {
+                Vector3 pos = transform.position;
+                Vector3 rot = transform.rotation.eulerAngles;
+                rot = new Vector3(rot.y, rot.x, rot.z);
+                Instantiate(fallEnemy, pos, Quaternion.Euler(rot));
 
-                }
-                else
-                {
-                    isAttack = false;
-                }
+                isAttack = false;
             }
             else
             {
