@@ -40,6 +40,11 @@ public class HUD : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (m_player == null || m_feverTime == null)
+        {
+            return;
+        }
+
         nowHP = m_player.getHP();
         HPGauge.sizeDelta = new Vector2((m_width / (float)m_maxHP) * nowHP, HPGauge.rect.height);
 
