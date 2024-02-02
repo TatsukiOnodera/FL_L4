@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Boss_01_CS;
 
 public class move_E_CS : MonoBehaviour
 {
@@ -38,5 +39,17 @@ public class move_E_CS : MonoBehaviour
         }
 
         transform.position = pos;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "player")
+        {
+            if (other.GetComponent<player_SC>().getHP() == 0)
+            {
+                return;
+            }
+            other.GetComponent<player_SC>().damage();
+        }
     }
 }
