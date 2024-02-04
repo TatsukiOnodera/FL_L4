@@ -21,7 +21,7 @@ public class player_SC : MonoBehaviour
     private int jumpCount;
 
     // HP
-    [SerializeField] private int HP = 3;
+    [SerializeField] private int HP;
 
     // アニメーション
     private Animator anim = null;
@@ -31,12 +31,19 @@ public class player_SC : MonoBehaviour
     private int nodamageTime;
     private bool isAmor;
 
+    // SE
+    [SerializeField] private AudioClip dead_SE;
+    [SerializeField] private AudioClip damage_SE;
+    [SerializeField] private AudioClip jump_SE;
+    private AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
         // リジッドボディ2Dをコンポーネントから取得して変数に入れる
         rbody = GetComponent<Rigidbody>();
         //初期化
+        audioSource = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
         position = transform.position;
         transform.rotation = Quaternion.identity;
@@ -81,6 +88,7 @@ public class player_SC : MonoBehaviour
             }
             if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown("joystick button 0")) && jumpCount < maxJumpCount)
             {
+                audioSource.PlayOneShot(jump_SE);
                 anim.SetBool("jump", true);
                 // リジッドボディに力を加える（上方向にジャンプ力をかける）
                 rbody.AddForce(new Vector3(0, 1, 0) * jumpP);
@@ -99,7 +107,7 @@ public class player_SC : MonoBehaviour
         transform.rotation = Quaternion.Euler(rotation);
 
         //無敵時間
-        if (isAmor)
+        if (isAmor == true)
         {
             nodamageTime++;
             if (nodamageTime > 180)
@@ -111,6 +119,7 @@ public class player_SC : MonoBehaviour
         //HPが0になったら死亡
         if (HP == 0 && !anim.GetBool("death"))
         {
+            audioSource.PlayOneShot(dead_SE);
             anim.SetBool("death", true);
             speed = 0.0f;
         }
@@ -173,6 +182,10 @@ public class player_SC : MonoBehaviour
         {
             anim.SetBool("death", true);
         }
+        else
+        {
+            audioSource.PlayOneShot(damage_SE);
+        }
     }
 
     /// <summary>
@@ -182,21 +195,5 @@ public class player_SC : MonoBehaviour
     public int getHP()
     {
         return HP;
-    }
-
-    /// <summary>
-    /// 生死フラグを取得
-    /// </summary>
-    /// <returns>bool</returns>
-    public bool GetIsAlive()
-    {
-        if (0 < HP)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
     }
 }

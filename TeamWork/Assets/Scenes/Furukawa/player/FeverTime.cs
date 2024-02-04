@@ -36,21 +36,19 @@ public class FeverTime : MonoBehaviour
     private Animator anim = null;
     private AnimatorStateInfo state;
 
-    // オブジェクト
-    private GameObject player = null;
+    // SE
+    [SerializeField] private AudioClip beBig_SE;
+    private AudioSource audioSource;
 
     /*メンバ関数*/
     // Start is called before the first frame update
     void Start()
     {
-        if (player == null)
-        {
-            player = GameObject.FindGameObjectWithTag("player");
-        }
+        audioSource = GetComponent<AudioSource>();
         m_isBigTimer = m_limitBigTime;
         m_intervalTimer = 0;
         m_isBig = false;
-        anim = player.GetComponent<Animator>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -98,6 +96,7 @@ public class FeverTime : MonoBehaviour
         // フィーバーゲージがたまっていないか
         if (m_limitFeverGauge <= m_feverGauge && Input.GetKeyDown(KeyCode.V) && m_isBig == false)
         {
+            audioSource.PlayOneShot(beBig_SE);
             if (m_player.transform.localScale.x != 0.5f)
             {
                 m_player.transform.Translate(0, 2.0f, 0);

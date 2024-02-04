@@ -20,12 +20,17 @@ public class shot_E_SC : MonoBehaviour
     // 発射のインターバル
     private int count = 0;
 
+    // SE
+    [SerializeField] private AudioClip shot_SE;
+    private AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         if (player == null)
         {
-            player = GameObject.FindGameObjectWithTag("player");
+            player = GameObject.FindGameObjectWithTag("player_model");
         }
         m_enemy = GetComponent<enemy_SC>();
     }
@@ -33,7 +38,6 @@ public class shot_E_SC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // ポーズ中は動かない
         if (Time.deltaTime == 0 || player == null)
         {
             return;
@@ -53,6 +57,8 @@ public class shot_E_SC : MonoBehaviour
 
     private void shot()
     {
+        audioSource.PlayOneShot(shot_SE);
+
         Vector3 pos = transform.position;
         Vector3 rot = transform.rotation.eulerAngles;
         rot = new Vector3(rot.y, rot.x, rot.z);

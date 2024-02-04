@@ -119,4 +119,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.2
-  vec: {x: 0.89554596, y: 0.444969, z: 0.0000000048331783}
+  vec: {x: 0, y: 0, z: 0}

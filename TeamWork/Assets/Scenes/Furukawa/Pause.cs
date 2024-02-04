@@ -19,9 +19,15 @@ public class Pause : MonoBehaviour
     // ÉÅÉjÉÖÅ[âÊñ Ç…à⁄çs
     private bool isBack = false;
 
+    // SE
+    [SerializeField] private AudioClip sound1;
+    [SerializeField] private AudioClip sound2;
+    private AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         if (m_pause ==null)
         {
             m_pause = GameObject.Find("Pause");
@@ -36,6 +42,7 @@ public class Pause : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
+                audioSource.PlayOneShot(sound1);
                 Time.timeScale = 0;
                 isPose = true;
                 m_pause.SetActive(true);
@@ -46,6 +53,7 @@ public class Pause : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space) && isBack == false)
             {
+                audioSource.PlayOneShot(sound1);
                 if (textY == -50)
                 {
                     isBack = true;
@@ -57,6 +65,7 @@ public class Pause : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S))
             {
+                audioSource.PlayOneShot(sound2);
                 if (textY == -50)
                 {
                     textY = -230;

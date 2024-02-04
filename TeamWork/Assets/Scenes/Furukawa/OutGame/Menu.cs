@@ -14,9 +14,15 @@ public class Menu : MonoBehaviour
     // ステージを選んだか
     private bool isSelect = false;
 
+    // SE
+    [SerializeField] private AudioClip sound1;
+    [SerializeField] private AudioClip sound2;
+    private AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         textY = 25;
     }
 
@@ -25,6 +31,8 @@ public class Menu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            audioSource.PlayOneShot(sound1);
+
             if (textY == 25)
             {
                 isSelect = true;
@@ -41,6 +49,8 @@ public class Menu : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.W))
         {
+            audioSource.PlayOneShot(sound2);
+
             textY += 75;
 
             if (textY > 25)
@@ -52,6 +62,8 @@ public class Menu : MonoBehaviour
         }
         else if (Input.GetKeyUp(KeyCode.S))
         {
+            audioSource.PlayOneShot(sound2);
+
             textY -= 75;
 
             if (textY < -125)

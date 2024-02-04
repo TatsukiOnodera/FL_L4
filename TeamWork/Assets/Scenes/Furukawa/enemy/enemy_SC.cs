@@ -29,9 +29,15 @@ public class enemy_SC : MonoBehaviour
     private Animator anim = null;
     private AnimatorStateInfo state;
 
+    // SE
+    [SerializeField] private AudioClip dead_SE;
+    [SerializeField] private AudioClip damage_SE;
+    private AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         rbody = GetComponent<Rigidbody>();
         if (this.gameObject.tag == "boss")
         {
@@ -51,6 +57,7 @@ public class enemy_SC : MonoBehaviour
         // HP‚ª0‚È‚ç
         if (enemyHP <= 0)
         {
+            audioSource.PlayOneShot(dead_SE);
             if (this.gameObject.tag == "enemy")
             {
                 Destroy(this.gameObject);
@@ -126,6 +133,7 @@ public class enemy_SC : MonoBehaviour
     /// </summary>
     public void damage()
     {
+        audioSource.PlayOneShot(damage_SE);
         enemyHP -= 1;
     }
 
