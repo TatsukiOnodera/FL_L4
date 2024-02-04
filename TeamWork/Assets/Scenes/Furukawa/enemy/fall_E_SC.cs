@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class fall_E_SC : MonoBehaviour
@@ -10,14 +12,17 @@ public class fall_E_SC : MonoBehaviour
         fall, //ìGê∂ê¨
     };
 
-    public int maxMoveCount = 200;
-    public float moveSpeed = 0.01f;
+    public int maxMoveCount = 500;
+    public float moveSpeed = 0.005f;
     public float flyHeight = 10.0f;
     public GameObject fallEnemy = null;
 
+    private Animator anim;
+    private AnimatorStateInfo animState;
     private enemyState myState = enemyState.idle;
     private GameObject player = null;
     private float forPlayerX;
+    private Vector3 rotation;
     //ë“ã@
     private bool isTurn = false;
     private int moveCount = 0;
@@ -31,14 +36,17 @@ public class fall_E_SC : MonoBehaviour
         {
             player = GameObject.FindGameObjectWithTag("player");
         }
+
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        animState = anim.GetCurrentAnimatorStateInfo(0);
         transform.position = new Vector3(transform.position.x, flyHeight, 0);
         //playerÇ∆ÇÃãóó£ÇåvéZ
-        forPlayerX = player.transform.position.x - transform.position.x;
+        forPlayerX = MathF.Abs(player.transform.position.x - transform.position.x);
 
         if (myState == enemyState.idle)
         {
@@ -54,18 +62,24 @@ public class fall_E_SC : MonoBehaviour
             if (isTurn)
             {
                 pos.x += moveSpeed;
+                rotation = new Vector3(0, 90, 0);
+                transform.rotation = Quaternion.Euler(rotation);
             }
             else
             {
                 pos.x -= moveSpeed;
+                rotation = new Vector3(0, -90, 0);
+                transform.rotation = Quaternion.Euler(rotation);
             }
 
             transform.position = pos;
 
             //çıìGÇ…à¯Ç¡Ç©Ç©Ç¡ÇΩÇÁ
-            if (forPlayerX <= 10.0f)
+            if (forPlayerX <= 1.0f)
             {
+                isAttack = true;
                 myState = enemyState.fall;
+                anim.SetBool("fall", true);
             }
         }
         else if (myState == enemyState.fall)
@@ -81,7 +95,11 @@ public class fall_E_SC : MonoBehaviour
             }
             else
             {
-                myState = enemyState.idle;
+                if (animState.normalizedTime >= 1.0f)
+                {
+                    anim.SetBool("fall", false);
+                    myState = enemyState.idle;
+                }
             }
         }
     }
