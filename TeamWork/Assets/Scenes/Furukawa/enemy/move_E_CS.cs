@@ -10,6 +10,7 @@ public class move_E_CS : MonoBehaviour
 
     bool isTurn = false;
     int moveCount = 0;
+    private Vector3 rotation;
 
     // Start is called before the first frame update
     void Start()
@@ -32,10 +33,14 @@ public class move_E_CS : MonoBehaviour
         if (isTurn)
         {
             pos.x += moveSpeed;
+            rotation = new Vector3(0, 90, 0);
+            transform.rotation = Quaternion.Euler(rotation);
         }
         else
         {
             pos.x -= moveSpeed;
+            rotation = new Vector3(0, -90, 0);
+            transform.rotation = Quaternion.Euler(rotation);
         }
 
         transform.position = pos;
