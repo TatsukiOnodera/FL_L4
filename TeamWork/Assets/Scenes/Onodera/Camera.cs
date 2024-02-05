@@ -38,6 +38,7 @@ public class ChiseCamera : MonoBehaviour
             cameraPos.y = target.transform.position.y;   // カメラの縦位置に対象の位置を入れる
         }
 
+        cameraPos.y = 3;
         cameraPos.z = -10; // カメラの奥行きの位置に-10を入れる
         Camera.main.gameObject.transform.position = cameraPos; //　カメラの位置に変数cameraPosの位置を入れる
 

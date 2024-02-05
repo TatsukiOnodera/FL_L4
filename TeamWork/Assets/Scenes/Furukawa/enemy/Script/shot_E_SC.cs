@@ -30,7 +30,7 @@ public class shot_E_SC : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         if (player == null)
         {
-            player = GameObject.FindGameObjectWithTag("player_model");
+            player = GameObject.Find("player_model");
         }
         m_enemy = GetComponent<enemy_SC>();
     }
@@ -50,24 +50,37 @@ public class shot_E_SC : MonoBehaviour
         float dis = Vector3.Distance(enemyPos, playerPos);
         if (shotTiming <= count && dis <= shotDistance && m_enemy.GetIsJump() == false)
         {
+            Debug.Log("”­ŽË");
+            Debug.Log(dis);
+            Debug.Log(enemyPos);
+            Debug.Log(playerPos);
             shot();
             count = 0;
+        }
+
+        if (enemyPos.x < playerPos.x)
+        {
+            transform.rotation = Quaternion.Euler(new Vector3(0, -90, 0));
+        }
+        else
+        {
+            transform.rotation = Quaternion.Euler(new Vector3(0, 90, 0));
         }
     }
 
     private void shot()
     {
+        // SE
         audioSource.PlayOneShot(shot_SE);
 
+        // ”­ŽË
+        Vector3 playerPos = player.transform.position;
+        playerPos.y += 0.5f;
+        transform.LookAt(playerPos);
         Vector3 pos = transform.position;
-        Vector3 rot = transform.rotation.eulerAngles;
-        rot = new Vector3(rot.y, rot.x, rot.z);
-        Instantiate(bullet, pos, Quaternion.Euler(rot));
-
-        var bulletobject = bullet.GetComponent<bullet_E_SC>();
-
-        Vector3 direction = player.transform.position - transform.position;
-
-        bulletobject.setvec(direction.normalized);
+        pos.y += 0.75f;
+        Vector3 rot = new Vector3(0.0f, 0.0f, 0.0f);
+        GameObject shotObj = Instantiate(bullet, pos, Quaternion.Euler(rot));
+        shotObj.GetComponent<bullet_E_SC>().setvec(transform.forward);
     }
 }

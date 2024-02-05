@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 98c59b2267dab1747aff097fbf149935, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.07
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 98c59b2267dab1747aff097fbf149935, type: 3}
       propertyPath: m_LocalPosition.z
@@ -122,10 +122,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1
+  m_Radius: 3
+  m_Height: 3
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 2, z: -1}
 --- !u!54 &-8409927832580367092
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -282,7 +282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86f3d543429502f47828783b5561d5ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localGravity: {x: 0, y: 0, z: 0}
+  localGravity: {x: 0, y: -30, z: 0}
 --- !u!114 &-1595123987203621824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,7 +314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 7262224719552758423, guid: 688e785cd7302ca44816c1942a5fced1, type: 3}
-  player: {fileID: 6844592480864848728, guid: 698f23ab6523efd408119d7a06458e19, type: 3}
+  player: {fileID: 0}
   m_enemy: {fileID: -1595123987203621824}
   shotTiming: 160
   shotDistance: 15

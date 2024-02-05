@@ -23,6 +23,9 @@ public class player_SC : MonoBehaviour
     // HP
     [SerializeField] private int HP;
 
+    // 地上にいるか
+    private bool isStand;
+
     // アニメーション
     private Animator anim = null;
     private AnimatorStateInfo animState;
@@ -54,6 +57,7 @@ public class player_SC : MonoBehaviour
         jumpCount = 0;
         nodamageTime = 0;
         isAmor = false;
+        isStand = false;
     }
 
     // Update is called once per frame
@@ -64,6 +68,8 @@ public class player_SC : MonoBehaviour
         {
             return;
         }
+
+        isStand = false;
 
         // 座標取得
         position = transform.position;
@@ -82,7 +88,7 @@ public class player_SC : MonoBehaviour
                 rotation = new Vector3(0, -90, 0);
                 anim.SetBool("run", true);
 
-                if (jumpCount == 0)
+                if (jumpCount == 0 && isStand == false)
                 {
                     Vector3 pos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
                     Instantiate(dashEffect, pos, Quaternion.identity);
@@ -95,7 +101,7 @@ public class player_SC : MonoBehaviour
                 rotation = new Vector3(0, 90, 0);
                 anim.SetBool("run", true);
 
-                if (jumpCount == 0)
+                if (jumpCount == 0 && isStand == false)
                 {
                     Vector3 pos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
                     Instantiate(dashEffect, pos, Quaternion.identity);
@@ -163,6 +169,7 @@ public class player_SC : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("floor"))
         {
+            isStand = true;
             jumpCount = 0;
             anim.SetBool("jump", false);
             Vector3 pos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
@@ -184,6 +191,20 @@ public class player_SC : MonoBehaviour
             {
                 collision.gameObject.GetComponent<enemy_SC>().damage();
             }
+        }
+        if (collision.gameObject.CompareTag("shield"))
+        {
+            float boundsPower = 20.0f;
+
+            // 衝突位置を取得する
+            Vector3 hitPos = collision.contacts[0].point;
+
+            // 衝突位置から自機へ向かうベクトルを求める
+            Vector3 boundVec = this.transform.position - hitPos;
+
+            // 逆方向にはねる
+            Vector3 forceDir = boundsPower * boundVec.normalized;
+            rbody.AddForce(forceDir);
         }
     }
 
