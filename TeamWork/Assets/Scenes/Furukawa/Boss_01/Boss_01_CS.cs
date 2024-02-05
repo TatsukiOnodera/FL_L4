@@ -13,9 +13,10 @@ public class Boss_01_CS : MonoBehaviour
         Idle, //待機
         Shot, //射撃
         Attack, //近接
+        shield,  //盾
+        down    //ダウン
     };
 
-    //public Animator animator; //Animatorコンポーネント
     public GameObject bullet; //弾
 
     private int maxIdleAnimationCount = 2;

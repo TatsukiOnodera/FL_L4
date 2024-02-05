@@ -491,6 +491,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4410072931863772409, guid: 698f23ab6523efd408119d7a06458e19, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -4104678165058401596, guid: 17507f94a001701448a39b1b478ee37b, type: 2}
     - target: {fileID: 6176458415015072226, guid: 698f23ab6523efd408119d7a06458e19, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.15
@@ -621,6 +625,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8722750137492969333, guid: d585117ec25963c41b6c27b117c9a3f4, type: 3}
+      propertyPath: m_isWalker
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 512357518483212499, guid: d585117ec25963c41b6c27b117c9a3f4, type: 3}
       propertyPath: m_Name
       value: enemy_02
@@ -812,6 +820,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8722750137492969333, guid: d585117ec25963c41b6c27b117c9a3f4, type: 3}
+      propertyPath: m_isWalker
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 512357518483212499, guid: d585117ec25963c41b6c27b117c9a3f4, type: 3}
       propertyPath: m_Name
       value: enemy_02
@@ -1413,7 +1425,7 @@ AudioSource:
   m_GameObject: {fileID: 476776354}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -4104678165058401596, guid: 17507f94a001701448a39b1b478ee37b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -1984,6 +1996,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8722750137492969333, guid: d585117ec25963c41b6c27b117c9a3f4, type: 3}
+      propertyPath: m_isWalker
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 512357518483212499, guid: d585117ec25963c41b6c27b117c9a3f4, type: 3}
       propertyPath: m_Name
       value: enemy_02
@@ -2243,6 +2259,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1396829906}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &955963312 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6844592480864848728, guid: 698f23ab6523efd408119d7a06458e19, type: 3}
+  m_PrefabInstance: {fileID: 48029794}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1032743803
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2251,6 +2272,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8722750137492969333, guid: d585117ec25963c41b6c27b117c9a3f4, type: 3}
+      propertyPath: m_isWalker
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 512357518483212499, guid: d585117ec25963c41b6c27b117c9a3f4, type: 3}
       propertyPath: m_Name
       value: enemy_02
@@ -2880,6 +2905,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8722750137492969333, guid: d585117ec25963c41b6c27b117c9a3f4, type: 3}
+      propertyPath: m_isWalker
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 512357518483212499, guid: d585117ec25963c41b6c27b117c9a3f4, type: 3}
       propertyPath: m_Name
       value: enemy_02
@@ -3387,6 +3416,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8722750137492969333, guid: d585117ec25963c41b6c27b117c9a3f4, type: 3}
+      propertyPath: m_isWalker
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 512357518483212499, guid: d585117ec25963c41b6c27b117c9a3f4, type: 3}
       propertyPath: m_Name
       value: enemy_02
@@ -4069,6 +4102,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8722750137492969333, guid: d585117ec25963c41b6c27b117c9a3f4, type: 3}
+      propertyPath: m_isWalker
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 512357518483212499, guid: d585117ec25963c41b6c27b117c9a3f4, type: 3}
       propertyPath: m_Name
       value: enemy_02
@@ -4231,6 +4268,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8722750137492969333, guid: d585117ec25963c41b6c27b117c9a3f4, type: 3}
+      propertyPath: m_isWalker
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 512357518483212499, guid: d585117ec25963c41b6c27b117c9a3f4, type: 3}
       propertyPath: m_Name
       value: enemy_02
@@ -4450,6 +4491,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8722750137492969333, guid: d585117ec25963c41b6c27b117c9a3f4, type: 3}
+      propertyPath: m_isWalker
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 512357518483212499, guid: d585117ec25963c41b6c27b117c9a3f4, type: 3}
       propertyPath: m_Name
       value: enemy_02
@@ -4507,6 +4552,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8722750137492969333, guid: d585117ec25963c41b6c27b117c9a3f4, type: 3}
+      propertyPath: m_isWalker
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 512357518483212499, guid: d585117ec25963c41b6c27b117c9a3f4, type: 3}
       propertyPath: m_Name
       value: enemy_02
@@ -4698,6 +4747,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8722750137492969333, guid: d585117ec25963c41b6c27b117c9a3f4, type: 3}
+      propertyPath: m_isWalker
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 512357518483212499, guid: d585117ec25963c41b6c27b117c9a3f4, type: 3}
       propertyPath: m_Name
       value: enemy_02
@@ -5264,6 +5317,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8722750137492969333, guid: d585117ec25963c41b6c27b117c9a3f4, type: 3}
+      propertyPath: m_isWalker
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 512357518483212499, guid: d585117ec25963c41b6c27b117c9a3f4, type: 3}
       propertyPath: m_Name
       value: enemy_02
@@ -5523,7 +5580,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05f2889086fd77345b0ba8f0f29c61d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 955963312}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
