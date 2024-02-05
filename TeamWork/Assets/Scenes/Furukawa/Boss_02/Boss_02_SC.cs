@@ -16,6 +16,7 @@ public class Boss_02_SC : MonoBehaviour
     public GameObject summonEnemy;//ìG
     public GameObject slashObject;
     public Vector3 slashPos;//è’åÇîgÇèoÇ∑à íu
+    public Vector3 summonPos;//ìGÇè¢ä´Ç∑ÇÈà íu
 
     private Vector3 centerPos;
     private int maxIdleAnimationCount = 3;
@@ -41,6 +42,10 @@ public class Boss_02_SC : MonoBehaviour
 
     //éÀåÇä÷åW
     private bool isBulletObjectInstantiate = false;
+
+    //éGãõìGä÷åW
+    private bool isSummon = false;
+    private bool isSummonEnemyInstantiate = false;
 
     // Start is called before the first frame update
     void Start()
@@ -134,8 +139,7 @@ public class Boss_02_SC : MonoBehaviour
             return;
         }
 
-        //stateNum = Random.Range(0, 100);
-        stateNum = 40;
+        stateNum = Random.Range(0, 100);
 
         if (isBetweenI(stateNum, 0, 20))
         {
@@ -146,7 +150,7 @@ public class Boss_02_SC : MonoBehaviour
                 return;
             }
             state = bossState.summon;
-            anim.SetBool("summon", true);
+            isSummon = false;
             idleAnimationCount = 0;
         }
         else if (isBetweenI(stateNum, 21, 60))
@@ -267,6 +271,45 @@ public class Boss_02_SC : MonoBehaviour
         if (state != bossState.summon || !isMoation)
         {
             return;
+        }
+
+        if (isSummon)
+        {
+            //âEÇå¸Ç≠
+            transform.rotation = Quaternion.Euler(new Vector3(0, 90, 0));
+
+            if (animState.normalizedTime > 1.0f)
+            {
+                isSummon = false;
+                state = bossState.Idle;
+                anim.SetBool("summon", false);
+                isMoation = false;
+                idleAnimationCount = 0;
+                isSummonEnemyInstantiate = false;
+            }
+            else if (animState.normalizedTime > 0.8f && !isSummonEnemyInstantiate)
+            {
+                //è’åÇîgê∂ê¨
+                Vector3 pos = transform.position;
+                pos = new Vector3(pos.x, pos.y + 0.5f, pos.z);
+                Vector3 rot = new Vector3(0, 0, 0);
+                Instantiate(summonEnemy, pos, Quaternion.Euler(rot));
+                summonEnemy.GetComponent<Rigidbody>().AddForce(new Vector3(2, 1, 0));
+
+                isSummonEnemyInstantiate = true;
+            }
+        }
+        else
+        {
+            if (transform.position != summonPos)
+            {
+                forAttackVector(summonPos);
+            }
+            else
+            {
+                isSummon = true;
+                anim.SetBool("summon", true);
+            }
         }
     }
 
