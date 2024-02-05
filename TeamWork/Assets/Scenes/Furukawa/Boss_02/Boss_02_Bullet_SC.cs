@@ -86,18 +86,19 @@ public class Boss_02_Bullet_SC : MonoBehaviour
     private void forAttackVector(Vector3 goal)
     {
         Vector3 returnVec;
+        float moveSpeed = 0.01f;
 
-        returnVec = Vector3.Normalize(goal - transform.position) * 0.02f;
+        returnVec = Vector3.Normalize(goal - transform.position) * moveSpeed;
 
         transform.position += returnVec;
 
-        if (isBetweenF(transform.position.x, goal.x - 0.02f, goal.x + 0.02f))
+        if (isBetweenF(transform.position.x, goal.x - moveSpeed, goal.x + moveSpeed))
         {
             transform.position = new Vector3(goal.x, transform.position.y, transform.position.z);
             return;
         }
 
-        if (isBetweenF(transform.position.y, goal.y - 0.02f, goal.y + 0.02f))
+        if (isBetweenF(transform.position.y, goal.y - moveSpeed, goal.y + moveSpeed))
         {
             transform.position = new Vector3(transform.position.x, goal.y, transform.position.z);
             return;

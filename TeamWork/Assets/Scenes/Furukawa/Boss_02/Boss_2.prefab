@@ -167,9 +167,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79a7f5c289869f7438ae314d7e5b8f33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossBullet: {fileID: 7262224719552758423, guid: c67baaf99f95a604d808938e4b1d5ba6, type: 3}
+  bossBullet: {fileID: 4314386729795430807, guid: 119045d2a1b6fc34184eab8f57ad4168, type: 3}
   summonEnemy: {fileID: 0}
-  slashObject: {fileID: 7262224719552758423, guid: c67baaf99f95a604d808938e4b1d5ba6, type: 3}
+  slashObject: {fileID: 7262224719552758423, guid: 450a5f04a9f444e4498ca09b4c57112f, type: 3}
   slashPos: {x: 0, y: 0, z: 0}
 --- !u!114 &3670967781744034948
 MonoBehaviour:
@@ -196,4 +196,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86f3d543429502f47828783b5561d5ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localGravity: {x: 0, y: -30, z: 0}
+  localGravity: {x: 0, y: 0, z: 0}
