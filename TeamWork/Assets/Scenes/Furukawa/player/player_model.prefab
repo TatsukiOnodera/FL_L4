@@ -249,6 +249,7 @@ MonoBehaviour:
   dead_SE: {fileID: 8300000, guid: 5430bdb1fad04f64d8c35def6d20e46f, type: 3}
   damage_SE: {fileID: 8300000, guid: c4bd9c49d5b21a341940710fdded4fc3, type: 3}
   jump_SE: {fileID: 8300000, guid: 4405fc7b763f9784580f3dec355de74e, type: 3}
+  dashEffect: {fileID: 8045276067728702618, guid: e0f1960c73ca825428b6ce3aeed4c048, type: 3}
 --- !u!114 &-1540284193645789715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,6 +264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 3698864265895668997, guid: 94a8f1f838f901a4180879555f6afc88, type: 3}
   shot_SE: {fileID: 8300000, guid: 7298af9ede7b95c41ba02cb3aa723237, type: 3}
+  shotEffect: {fileID: 4063958356972551829, guid: 0263ce00afeec2348aa39792180fa26f, type: 3}
 --- !u!82 &-4410072931863772409
 AudioSource:
   m_ObjectHideFlags: 0

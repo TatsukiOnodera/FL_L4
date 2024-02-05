@@ -13,6 +13,9 @@ public class bullet_E_SC : MonoBehaviour
     // ベクトル
     [SerializeField] private Vector3 vec = Vector3.zero;
 
+    // エフェクト
+    [SerializeField] private GameObject damageEffect;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +54,8 @@ public class bullet_E_SC : MonoBehaviour
     {
         if (other.gameObject.tag == "player")
         {
+            Vector3 pos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            Instantiate(damageEffect, pos, Quaternion.identity);
             Destroy(this.gameObject);
             FeverTime m_feverTime = other.GetComponent<FeverTime>();
             if (m_feverTime.GetIsBig() == false)

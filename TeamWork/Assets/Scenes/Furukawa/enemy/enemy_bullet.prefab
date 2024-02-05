@@ -120,3 +120,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.2
   vec: {x: 0, y: 0, z: 0}
+  damageEffect: {fileID: 2855618773254087906, guid: 65488e5c6616d16488c06335fa264e36, type: 3}

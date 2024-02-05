@@ -17,6 +17,9 @@ public class shot_SC : MonoBehaviour
     [SerializeField] private AudioClip shot_SE;
     private AudioSource audioSource;
 
+    // 発射エフェクト
+    [SerializeField] private GameObject shotEffect;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,11 +59,20 @@ public class shot_SC : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 1"))
         {
             audioSource.PlayOneShot(shot_SE);
-            Vector3 pos = new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z);
+            Vector3 pos = new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z);
             Vector3 rot = transform.rotation.eulerAngles;
             rot = new Vector3(rot.y, rot.x, rot.z);
             Instantiate(bullet, pos, Quaternion.Euler(rot));
             anim.SetBool("shot", true);
+            if (transform.localEulerAngles.y == 90)
+            {
+                pos.x += 0.75f;
+            }
+            else
+            {
+                pos.x -= 0.75f;
+            }
+            Instantiate(shotEffect, pos, Quaternion.identity);
         }
     }
 }

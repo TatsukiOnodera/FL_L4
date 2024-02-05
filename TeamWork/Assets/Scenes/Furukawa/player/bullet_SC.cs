@@ -8,6 +8,8 @@ public class bullet_SC : MonoBehaviour
     private int count = 0;
     // 弾速
     [SerializeField] private float speed = 0.07f;
+    // エフェクト
+    [SerializeField] private GameObject damageEffect;
 
     // Start is called before the first frame update
     void Start()
@@ -52,6 +54,8 @@ public class bullet_SC : MonoBehaviour
             GameObject obj = GameObject.Find("player_model");
             FeverTime fever = obj.GetComponent<FeverTime>();
             fever.UpFeverGauge();
+            Vector3 pos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            Instantiate(damageEffect, pos, Quaternion.identity);
         }
     }
 }

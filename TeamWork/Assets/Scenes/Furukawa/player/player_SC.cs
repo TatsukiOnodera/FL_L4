@@ -37,6 +37,9 @@ public class player_SC : MonoBehaviour
     [SerializeField] private AudioClip jump_SE;
     private AudioSource audioSource;
 
+    // 発射エフェクト
+    [SerializeField] private GameObject dashEffect;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -78,6 +81,12 @@ public class player_SC : MonoBehaviour
                 position.x -= speed;
                 rotation = new Vector3(0, -90, 0);
                 anim.SetBool("run", true);
+
+                if (jumpCount == 0)
+                {
+                    Vector3 pos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+                    Instantiate(dashEffect, pos, Quaternion.identity);
+                }
             }
             else if (Input.GetKey(KeyCode.D) || Input.GetAxis("L_Stick_H") > 0)
             {
@@ -85,6 +94,12 @@ public class player_SC : MonoBehaviour
                 position.x += speed;
                 rotation = new Vector3(0, 90, 0);
                 anim.SetBool("run", true);
+
+                if (jumpCount == 0)
+                {
+                    Vector3 pos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+                    Instantiate(dashEffect, pos, Quaternion.identity);
+                }
             }
             if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown("joystick button 0")) && jumpCount < maxJumpCount)
             {
@@ -148,6 +163,11 @@ public class player_SC : MonoBehaviour
         {
             jumpCount = 0;
             anim.SetBool("jump", false);
+            Vector3 pos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            for (int i = 0; i < 10; i++)
+            {
+                Instantiate(dashEffect, pos, Quaternion.identity);
+            }
         }
         if (collision.gameObject.CompareTag("enemy"))
         {
