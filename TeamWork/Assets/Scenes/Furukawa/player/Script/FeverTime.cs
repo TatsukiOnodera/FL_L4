@@ -40,7 +40,7 @@ public class FeverTime : MonoBehaviour
     [SerializeField] private AudioClip beBig_SE;
     private AudioSource audioSource;
 
-    // 巨大化エフェクト
+    // エフェクト
     [SerializeField] private GameObject isBigEffect;
     [SerializeField] private GameObject isSmallEffect;
 
@@ -75,6 +75,15 @@ public class FeverTime : MonoBehaviour
             return;
         }
 
+        if (Input.GetKey(KeyCode.A) || Input.GetAxis("L_Stick_H") < 0)
+        {
+            transform.rotation = Quaternion.Euler(new Vector3(0, -90, 0));
+        }
+        else if (Input.GetKey(KeyCode.D) || Input.GetAxis("L_Stick_H") > 0)
+        {
+            transform.rotation = Quaternion.Euler(new Vector3(0, 90, 0));
+        }
+        
         IsBigShot();
 
         CountLimit();

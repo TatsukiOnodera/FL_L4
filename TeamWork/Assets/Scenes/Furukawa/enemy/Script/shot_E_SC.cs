@@ -50,10 +50,6 @@ public class shot_E_SC : MonoBehaviour
         float dis = Vector3.Distance(enemyPos, playerPos);
         if (shotTiming <= count && dis <= shotDistance && m_enemy.GetIsJump() == false)
         {
-            Debug.Log("”­ŽË");
-            Debug.Log(dis);
-            Debug.Log(enemyPos);
-            Debug.Log(playerPos);
             shot();
             count = 0;
         }

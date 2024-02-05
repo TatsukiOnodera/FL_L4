@@ -39,7 +39,7 @@ public class bullet_SC : MonoBehaviour
 
         count++;
 
-        if (count >= 90)
+        if (count > 30)
         {
             Destroy(this.gameObject);
         }

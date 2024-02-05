@@ -11,6 +11,8 @@ public class FeverBullet : MonoBehaviour
     // ˆÐ—Í
     [SerializeField] private int damage = 1;
 
+    [SerializeField] private GameObject damageEffect;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +51,8 @@ public class FeverBullet : MonoBehaviour
     {
         if (other.gameObject.tag == "enemy")
         {
+            Vector3 pos = other.gameObject.transform.position;
+            Instantiate(damageEffect, pos, Quaternion.identity);
             for (int i = 0; i < damage; i++)
             {
                 other.GetComponent<enemy_SC>().damage();
