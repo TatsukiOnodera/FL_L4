@@ -991,8 +991,8 @@ GameObject:
   - component: {fileID: 1994453338}
   - component: {fileID: 1994453337}
   - component: {fileID: 1994453336}
-  - component: {fileID: 1994453340}
   - component: {fileID: 1994453341}
+  - component: {fileID: 1994453340}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1108,7 +1108,7 @@ AudioSource:
   m_GameObject: {fileID: 1994453335}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -4104678165058401596, guid: 17507f94a001701448a39b1b478ee37b, type: 2}
+  OutputAudioMixerGroup: {fileID: -4104678165058401596, guid: 8e429e9dc3b74ee438346df65a051b71, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -1201,6 +1201,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 1818327585}
   - {fileID: 871863539}
+  - {fileID: 248950538}
   - {fileID: 1994453339}
   - {fileID: 1202543475}
-  - {fileID: 248950538}

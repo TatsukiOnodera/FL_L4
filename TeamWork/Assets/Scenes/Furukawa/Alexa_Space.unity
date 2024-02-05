@@ -387,10 +387,6 @@ PrefabInstance:
       propertyPath: speed
       value: 0.1
       objectReference: {fileID: 0}
-    - target: {fileID: -1540284193645789715, guid: 698f23ab6523efd408119d7a06458e19, type: 3}
-      propertyPath: shotEffect
-      value: 
-      objectReference: {fileID: 4063958356972551829, guid: 0263ce00afeec2348aa39792180fa26f, type: 3}
     - target: {fileID: 3221071486391773822, guid: 698f23ab6523efd408119d7a06458e19, type: 3}
       propertyPath: m_bullet
       value: 
@@ -1397,17 +1393,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1152270026}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdef5da0550ba7247bd7c053ce9d76f0, type: 3}
+  m_Script: {fileID: 11500000, guid: 65e5e6c7b8eb79946acdd8b131d3ab0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   HPGauge: {fileID: 1096580655}
   FeverGauge: {fileID: 1496316077}
-  m_player: {fileID: 0}
-  m_feverTime: {fileID: 0}
-  m_maxHP: 0
-  m_width: 0
-  nowHP: 0
-  nowFever: 0
 --- !u!1 &1153599312
 GameObject:
   m_ObjectHideFlags: 0
@@ -1762,10 +1752,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1511351523}
-  - component: {fileID: 1511351522}
-  - component: {fileID: 1511351524}
-  - component: {fileID: 1511351525}
   - component: {fileID: 1511351526}
+  - component: {fileID: 1511351528}
+  - component: {fileID: 1511351524}
+  - component: {fileID: 1511351527}
   m_Layer: 0
   m_Name: Scene
   m_TagString: Untagged
@@ -1773,19 +1763,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1511351522
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1511351521}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fc33db2148b76e42a24872d6e5b8b74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_fever: {fileID: 0}
 --- !u!4 &1511351523
 Transform:
   m_ObjectHideFlags: 0
@@ -1815,26 +1792,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_fadeIn: {fileID: 1463175787}
   m_fadeOut: {fileID: 746887213}
---- !u!114 &1511351525
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1511351521}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c5207743ecb6f546b6ad6a795465608, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_pause: {fileID: 2103249357}
-  selectCursor: {fileID: 733713517}
-  textY: 0
-  isPose: 0
-  isBack: 0
-  select: {fileID: 0}
-  move: {fileID: 0}
-  audioSource: {fileID: 0}
 --- !u!82 &1511351526
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1844,7 +1801,7 @@ AudioSource:
   m_GameObject: {fileID: 1511351521}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -4104678165058401596, guid: 8e429e9dc3b74ee438346df65a051b71, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -1931,6 +1888,34 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1511351527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511351521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16869d6bdc4588e4f952397c24cdce14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_pause: {fileID: 2103249357}
+  selectCursor: {fileID: 733713517}
+  select: {fileID: 8300000, guid: 4a43200222f00064796e23aa8bd0d2ea, type: 3}
+  move: {fileID: 8300000, guid: 7ea69760f13aaea47abefd24cf7b5964, type: 3}
+--- !u!114 &1511351528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511351521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e3fb6246fda43c4586572d08a322dae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1761128068
 GameObject:
   m_ObjectHideFlags: 0

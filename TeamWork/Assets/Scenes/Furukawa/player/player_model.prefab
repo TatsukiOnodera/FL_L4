@@ -106,7 +106,7 @@ PrefabInstance:
       addedObject: {fileID: -3625093282446478727}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1bd5863b86b3eec47a9ad310bbb46d73, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -1540284193645789715}
+      addedObject: {fileID: 7725483283246835409}
   m_SourcePrefab: {fileID: 100100000, guid: 1bd5863b86b3eec47a9ad310bbb46d73, type: 3}
 --- !u!1 &6844592480864848728 stripped
 GameObject:
@@ -348,7 +348,7 @@ MonoBehaviour:
   damage_SE: {fileID: 8300000, guid: c4bd9c49d5b21a341940710fdded4fc3, type: 3}
   jump_SE: {fileID: 8300000, guid: 4405fc7b763f9784580f3dec355de74e, type: 3}
   dashEffect: {fileID: 8045276067728702618, guid: 42002ca54ecd13749a247994cfec43ee, type: 3}
---- !u!114 &-1540284193645789715
+--- !u!114 &7725483283246835409
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
