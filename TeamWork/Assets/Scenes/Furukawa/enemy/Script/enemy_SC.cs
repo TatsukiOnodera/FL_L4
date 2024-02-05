@@ -118,6 +118,11 @@ public class enemy_SC : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        if (transform.position.z != 0.0f)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+        }
     }
 
     /// <summary>

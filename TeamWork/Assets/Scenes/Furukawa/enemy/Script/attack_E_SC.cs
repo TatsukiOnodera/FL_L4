@@ -144,8 +144,7 @@ public class attack_E_SC : MonoBehaviour
             rotation = new Vector3(0, -90, 0);
             transform.rotation = Quaternion.Euler(rotation);
         }
-
-        if (transform.position.x < player.transform.position.x)
+        else
         {
             rotation = new Vector3(0, 90, 0);
             transform.rotation = Quaternion.Euler(rotation);
