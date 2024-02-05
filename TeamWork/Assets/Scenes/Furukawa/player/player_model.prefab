@@ -230,6 +230,8 @@ MonoBehaviour:
   m_limitFeverGauge: 10
   m_limitShotInterval: 30
   beBig_SE: {fileID: 8300000, guid: 47d46e108a2891b4b9b7683c59833205, type: 3}
+  isBigEffect: {fileID: 3167819416802070181, guid: 6a36e16eddd66714f95b720ec79bb727, type: 3}
+  isSmallEffect: {fileID: 3167819416802070181, guid: 89fbfa3b4fa0b4348aedc8e3e1dc172c, type: 3}
 --- !u!114 &-3625093282446478727
 MonoBehaviour:
   m_ObjectHideFlags: 0

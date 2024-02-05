@@ -40,6 +40,10 @@ public class FeverTime : MonoBehaviour
     [SerializeField] private AudioClip beBig_SE;
     private AudioSource audioSource;
 
+    // 巨大化エフェクト
+    [SerializeField] private GameObject isBigEffect;
+    [SerializeField] private GameObject isSmallEffect;
+
     /*メンバ関数*/
     // Start is called before the first frame update
     void Start()
@@ -96,6 +100,9 @@ public class FeverTime : MonoBehaviour
         // フィーバーゲージがたまっていないか
         if (m_limitFeverGauge <= m_feverGauge && Input.GetKeyDown(KeyCode.V) && m_isBig == false)
         {
+            Vector3 pos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            Vector3 rot = new Vector3(-90.0f, 0.0f, 0.0f);
+            Instantiate(isBigEffect, pos, Quaternion.Euler(rot));
             audioSource.PlayOneShot(beBig_SE);
             if (m_player.transform.localScale.x != 0.5f)
             {
@@ -151,6 +158,9 @@ public class FeverTime : MonoBehaviour
         // 制限時間を過ぎたか
         if (m_isBigTimer <= 0)
         {
+            Vector3 pos = new Vector3(transform.position.x, transform.position.y + 4.0f, transform.position.z);
+            Vector3 rot = new Vector3(90.0f, 0.0f, 0.0f);
+            Instantiate(isSmallEffect, pos, Quaternion.Euler(rot));
             m_isBigTimer = m_limitBigTime;
             m_intervalTimer = 0;
             m_feverGauge = 0;
