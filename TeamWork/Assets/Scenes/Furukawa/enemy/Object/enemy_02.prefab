@@ -146,7 +146,7 @@ AudioSource:
   m_GameObject: {fileID: 512357518483212499}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -4104678165058401596, guid: 8e429e9dc3b74ee438346df65a051b71, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -259,11 +259,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHP: 3
-  m_isWalker: 0
-  speed: 0.01
-  jumpPower: 1000
-  dead_SE: {fileID: 0}
-  damage_SE: {fileID: 0}
+  m_isWalker: 1
+  speed: 0.05
+  jumpPower: 1650
+  dead_SE: {fileID: 8300000, guid: 5430bdb1fad04f64d8c35def6d20e46f, type: 3}
+  damage_SE: {fileID: 8300000, guid: c4bd9c49d5b21a341940710fdded4fc3, type: 3}
 --- !u!114 &1534958573452649795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,6 +279,6 @@ MonoBehaviour:
   bullet: {fileID: 7262224719552758423, guid: 688e785cd7302ca44816c1942a5fced1, type: 3}
   player: {fileID: 6844592480864848728, guid: 698f23ab6523efd408119d7a06458e19, type: 3}
   m_enemy: {fileID: -8722750137492969333}
-  shotTiming: 600
-  shotDistance: 25
-  shot_SE: {fileID: 0}
+  shotTiming: 160
+  shotDistance: 15
+  shot_SE: {fileID: 8300000, guid: 7593a21fbe38e78449443e155a404aff, type: 3}

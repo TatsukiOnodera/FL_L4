@@ -118,4 +118,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51778ecfec028e446894a2cba256d83a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0.2
   vec: {x: 0, y: 0, z: 0}
+  damageEffect: {fileID: 2855618773254087906, guid: 65488e5c6616d16488c06335fa264e36, type: 3}
