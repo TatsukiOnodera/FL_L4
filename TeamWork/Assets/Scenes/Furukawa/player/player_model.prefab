@@ -322,8 +322,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_player: {fileID: 6844592480864848728}
   m_bullet: {fileID: 3698864265895668997, guid: 13350366c0a36a54493d87102cb76f73, type: 3}
-  m_limitBigTime: 300
-  m_limitFeverGauge: 9
+  m_limitBigTime: 180
+  m_limitFeverGauge: 5
   m_limitShotInterval: 30
   beBig_SE: {fileID: 8300000, guid: 47d46e108a2891b4b9b7683c59833205, type: 3}
   isBigEffect: {fileID: 3167819416802070181, guid: c7cfcbdfb72ca564cb60ffc8a485dcd6, type: 3}
@@ -343,7 +343,7 @@ MonoBehaviour:
   speed: 0.1
   jumpP: 2500
   maxJumpCount: 1
-  HP: 5
+  HP: 6
   dead_SE: {fileID: 8300000, guid: 5430bdb1fad04f64d8c35def6d20e46f, type: 3}
   damage_SE: {fileID: 8300000, guid: c4bd9c49d5b21a341940710fdded4fc3, type: 3}
   jump_SE: {fileID: 8300000, guid: 4405fc7b763f9784580f3dec355de74e, type: 3}

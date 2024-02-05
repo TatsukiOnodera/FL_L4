@@ -60,17 +60,14 @@ public class StageSceneChange : MonoBehaviour
                     if (SceneManager.GetActiveScene().name == "stage1")
                     {
                         SceneManager.LoadScene("GameClear");
-                        //SceneManager.LoadScene("stage_boss1");
                     }
                     else if (SceneManager.GetActiveScene().name == "stage2")
                     {
                         SceneManager.LoadScene("GameClear");
-                        //SceneManager.LoadScene("stage_boss2");
                     }
                     else if (SceneManager.GetActiveScene().name == "stage3")
                     {
                         SceneManager.LoadScene("GameClear");
-                        //SceneManager.LoadScene("stage_boss3");
                     }
                     else if (SceneManager.GetActiveScene().name == "stage_boss1")
                     {

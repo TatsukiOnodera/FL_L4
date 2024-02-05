@@ -19,25 +19,29 @@ public class Menu : MonoBehaviour
     [SerializeField] private AudioClip sound2;
     private AudioSource audioSource;
 
+    private bool pushStick;
+
     // Start is called before the first frame update
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
         textY = 100;
+        pushStick = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 1"))
         {
             audioSource.PlayOneShot(sound1);
 
             isSelect = true;
         }
 
-        if (Input.GetKeyUp(KeyCode.W))
+        if (Input.GetKeyUp(KeyCode.W) || (Input.GetAxis("L_Stick_V") < 0 && pushStick == false))
         {
+            pushStick = true;
             audioSource.PlayOneShot(sound2);
 
             textY += 200;
@@ -49,8 +53,9 @@ public class Menu : MonoBehaviour
 
             selectCursor.anchoredPosition = new Vector2(-254, textY);
         }
-        else if (Input.GetKeyUp(KeyCode.S))
+        else if (Input.GetKeyUp(KeyCode.S) || (0 < Input.GetAxis("L_Stick_V") && pushStick == false))
         {
+            pushStick = true;
             audioSource.PlayOneShot(sound2);
 
             textY -= 200;
@@ -61,6 +66,10 @@ public class Menu : MonoBehaviour
             }
 
             selectCursor.anchoredPosition = new Vector2(-254, textY);
+        }
+        else if (Input.GetAxis("L_Stick_V") == 0)
+        {
+            pushStick = false;
         }
     }
 

@@ -22,7 +22,7 @@ public class Title : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 1"))
         {
             audioSource.PlayOneShot(sound1);
             isChange = true;

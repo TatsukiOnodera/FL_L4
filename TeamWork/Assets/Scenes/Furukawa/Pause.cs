@@ -19,6 +19,8 @@ public class Pause : MonoBehaviour
     // ÉÅÉjÉÖÅ[âÊñ Ç…à⁄çs
     private bool isBack = false;
 
+    private bool pushStick;
+
     // SE
     [SerializeField] private AudioClip select;
     [SerializeField] private AudioClip move;
@@ -32,6 +34,7 @@ public class Pause : MonoBehaviour
         {
             m_pause = GameObject.Find("Pause");
         }
+        pushStick = false;
         ResetPause();
     }
 
@@ -40,13 +43,13 @@ public class Pause : MonoBehaviour
     {
         if (isPose == false)
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown("joystick button 7"))
             {
                 audioSource.PlayOneShot(select);
                 Time.timeScale = 0;
                 isPose = true;
                 m_pause.SetActive(true);
-                textY = -50;
+                textY = 0;
             }
         }
         else
@@ -54,7 +57,7 @@ public class Pause : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space) && isBack == false)
             {
                 audioSource.PlayOneShot(select);
-                if (textY == -50)
+                if (textY == 0)
                 {
                     isBack = true;
                 }
@@ -63,21 +66,44 @@ public class Pause : MonoBehaviour
                     ResetPause();
                 }
             }
-            else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S))
+            else if (CheckKey())
             {
                 audioSource.PlayOneShot(move);
-                if (textY == -50)
+                if (textY == 0)
                 {
-                    textY = -230;
+                    textY = -250;
                 }
                 else
                 {
-                    textY = -50;
+                    textY = 0;
                 }
             }
         }
             
-        selectCursor.anchoredPosition = new Vector2(-275, textY);
+        selectCursor.anchoredPosition = new Vector2(-400, textY);
+    }
+
+    private bool CheckKey()
+    {
+        if (Input.GetKeyUp(KeyCode.W) || (Input.GetAxis("L_Stick_V") < 0 && pushStick == false))
+        {
+            pushStick = true;
+            return pushStick;
+        }
+        else if (Input.GetKeyUp(KeyCode.S) || (0 < Input.GetAxis("L_Stick_V") && pushStick == false))
+        {
+            pushStick = true;
+            return pushStick;
+        }
+        else if (Input.GetAxis("L_Stick_V") == 0)
+        {
+            pushStick = false;
+            return pushStick;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public void ResetPause()
@@ -86,7 +112,7 @@ public class Pause : MonoBehaviour
         isBack = false;
         Time.timeScale = 1;
         m_pause.SetActive(false);
-        textY = -50;
+        textY = 0;
     }
 
     /// <summary>

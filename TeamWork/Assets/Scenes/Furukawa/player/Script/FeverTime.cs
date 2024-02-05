@@ -107,18 +107,21 @@ public class FeverTime : MonoBehaviour
     private void BeBig()
     {
         // フィーバーゲージがたまっていないか
-        if (m_limitFeverGauge <= m_feverGauge && Input.GetKeyDown(KeyCode.V) && m_isBig == false)
+        if (Input.GetKeyDown("joystick button 2") || Input.GetKeyDown(KeyCode.V))
         {
-            Vector3 pos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-            Vector3 rot = new Vector3(-90.0f, 0.0f, 0.0f);
-            Instantiate(isBigEffect, pos, Quaternion.Euler(rot));
-            audioSource.PlayOneShot(beBig_SE);
-            if (m_player.transform.localScale.x != 0.5f)
+            if (m_limitFeverGauge <= m_feverGauge && m_isBig == false)
             {
-                m_player.transform.Translate(0, 2.0f, 0);
+                Vector3 pos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+                Vector3 rot = new Vector3(-90.0f, 0.0f, 0.0f);
+                Instantiate(isBigEffect, pos, Quaternion.Euler(rot));
+                audioSource.PlayOneShot(beBig_SE);
+                if (m_player.transform.localScale.x != 0.5f)
+                {
+                    m_player.transform.Translate(0, 2.0f, 0);
+                }
+                m_player.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+                m_isBig = true;
             }
-            m_player.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-            m_isBig = true;
         }
     }
 
