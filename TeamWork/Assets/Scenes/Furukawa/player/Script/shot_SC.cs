@@ -36,7 +36,7 @@ public class shot_SC : MonoBehaviour
     void Update()
     {
         // É|Å[ÉYíÜÇÕìÆÇ©Ç»Ç¢
-        if (Time.deltaTime == 0)
+        if (Time.deltaTime == 0 || GetComponent<player_SC>().getHP() <= 0)
         {
             return;
         }

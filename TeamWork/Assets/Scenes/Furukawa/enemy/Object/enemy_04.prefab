@@ -34,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2fca8798b2290b149b34790bbe9fda34, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2fca8798b2290b149b34790bbe9fda34, type: 3}
       propertyPath: m_LocalRotation.x
@@ -42,7 +42,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2fca8798b2290b149b34790bbe9fda34, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2fca8798b2290b149b34790bbe9fda34, type: 3}
       propertyPath: m_LocalRotation.z
@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2fca8798b2290b149b34790bbe9fda34, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2fca8798b2290b149b34790bbe9fda34, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -109,7 +109,7 @@ AudioSource:
   m_GameObject: {fileID: 3240337735713252892}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -4104678165058401596, guid: 8e429e9dc3b74ee438346df65a051b71, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -221,7 +221,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!136 &6332985245171829831
 CapsuleCollider:
@@ -283,8 +283,8 @@ MonoBehaviour:
   m_isWalker: 0
   speed: 0.01
   jumpPower: 1000
-  dead_SE: {fileID: 0}
-  damage_SE: {fileID: 0}
+  dead_SE: {fileID: 8300000, guid: 5430bdb1fad04f64d8c35def6d20e46f, type: 3}
+  damage_SE: {fileID: 8300000, guid: c4bd9c49d5b21a341940710fdded4fc3, type: 3}
 --- !u!114 &-807508057062943881
 MonoBehaviour:
   m_ObjectHideFlags: 0

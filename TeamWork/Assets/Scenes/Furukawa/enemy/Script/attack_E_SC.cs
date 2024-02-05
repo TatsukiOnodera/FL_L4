@@ -46,6 +46,11 @@ public class attack_E_SC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (player == null)
+        {
+            return;
+        }
+
         animState = anim.GetCurrentAnimatorStateInfo(0);
 
         //player‚Æ‚Ì‹——£‚ðŒvŽZ
@@ -65,17 +70,13 @@ public class attack_E_SC : MonoBehaviour
             anim.SetBool("attack", true);
             anim.SetBool("find", false);
         }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "player")
+        if (collision.gameObject.CompareTag("player"))
         {
-            if (other.GetComponent<player_SC>().getHP() == 0)
+            if (collision.gameObject.GetComponent<player_SC>().getHP() == 0)
             {
                 return;
             }
-            other.GetComponent<player_SC>().damage();
+            collision.gameObject.GetComponent<player_SC>().damage();
         }
     }
 

@@ -72,7 +72,7 @@ public class player_SC : MonoBehaviour
         animState = anim.GetCurrentAnimatorStateInfo(0);
 
         FeverTime fever = GetComponent<FeverTime>();
-        if (fever.GetIsBig() == false)
+        if (fever.GetIsBig() == false && HP > 0)
         {
             // ジャンプをするためのコード（もしスペースキーが押されて、上方向に速度がない時に）
             if (Input.GetKey(KeyCode.A) || Input.GetAxis("L_Stick_H") < 0)

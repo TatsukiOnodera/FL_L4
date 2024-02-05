@@ -89,11 +89,13 @@ public class enemy_SC : MonoBehaviour
             float enemyX = transform.position.x;
             if (playerX < enemyX)
             {
+                transform.rotation = Quaternion.Euler(new Vector3(0, -90, 0));
                 rbody.AddForce(new Vector3(-1, 0, 0) * speed);
                 transform.position = new Vector3(transform.position.x - 1 * speed, transform.position.y, transform.position.z);
             }
             else
             {
+                transform.rotation = Quaternion.Euler(new Vector3(0, 90, 0));
                 rbody.AddForce(new Vector3(1, 0, 0) * speed);
                 transform.position = new Vector3(transform.position.x + 1 * speed, transform.position.y, transform.position.z);
             }
