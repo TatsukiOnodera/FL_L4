@@ -104,6 +104,21 @@ public class player_SC : MonoBehaviour
             jumpCount = 0;
             anim.SetBool("jump", false);
         }
+
+        if(collision.gameObject.CompareTag("shield"))
+        {
+            float boundsPower = 20.0f;
+
+            // 衝突位置を取得する
+            Vector3 hitPos = collision.contacts[0].point;
+
+            // 衝突位置から自機へ向かうベクトルを求める
+            Vector3 boundVec = this.transform.position - hitPos;
+
+            // 逆方向にはねる
+            Vector3 forceDir = boundsPower * boundVec.normalized;
+            rbody.AddForce(forceDir);
+        }
     }
 
     public void damage()
