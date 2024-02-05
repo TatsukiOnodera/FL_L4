@@ -381,7 +381,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3625093282446478727, guid: 698f23ab6523efd408119d7a06458e19, type: 3}
       propertyPath: jumpP
-      value: 1800
+      value: 2500
       objectReference: {fileID: 0}
     - target: {fileID: -3625093282446478727, guid: 698f23ab6523efd408119d7a06458e19, type: 3}
       propertyPath: speed
@@ -1402,6 +1402,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HPGauge: {fileID: 1096580655}
   FeverGauge: {fileID: 1496316077}
+  m_player: {fileID: 0}
+  m_feverTime: {fileID: 0}
+  m_maxHP: 0
+  m_width: 0
+  nowHP: 0
+  nowFever: 0
 --- !u!1 &1153599312
 GameObject:
   m_ObjectHideFlags: 0
@@ -1779,6 +1785,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fc33db2148b76e42a24872d6e5b8b74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_fever: {fileID: 0}
 --- !u!4 &1511351523
 Transform:
   m_ObjectHideFlags: 0
@@ -1822,8 +1829,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_pause: {fileID: 2103249357}
   selectCursor: {fileID: 733713517}
+  textY: 0
+  isPose: 0
+  isBack: 0
   select: {fileID: 0}
   move: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!82 &1511351526
 AudioSource:
   m_ObjectHideFlags: 0
