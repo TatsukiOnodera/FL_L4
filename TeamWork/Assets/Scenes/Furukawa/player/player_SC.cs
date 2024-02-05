@@ -141,7 +141,9 @@ public class player_SC : MonoBehaviour
         if (animState.IsName("metarig|dead 0") && animState.normalizedTime >= 1.5f)
         {
             Destroy(this.gameObject);
-            SceneManager.LoadScene("GameOver");
+            GameObject obj = GameObject.Find("Scene");
+            StageSceneChange scene = obj.GetComponent<StageSceneChange>();
+            scene.GetIsFall();
         }
 
         // —Ž‰º‚µ‚½‚Æ‚«

@@ -80,6 +80,11 @@ public class enemy_SC : MonoBehaviour
         // ƒWƒƒƒ“ƒv’†‚È‚ç
         if (m_isJump == true)
         {
+            if (GameObject.Find("player_model") == null)
+            {
+                return;
+            }
+
             float playerX = GameObject.Find("player_model").transform.position.x;
             float enemyX = transform.position.x;
             if (playerX < enemyX)

@@ -20,8 +20,8 @@ public class Pause : MonoBehaviour
     private bool isBack = false;
 
     // SE
-    [SerializeField] private AudioClip sound1;
-    [SerializeField] private AudioClip sound2;
+    [SerializeField] private AudioClip select;
+    [SerializeField] private AudioClip move;
     private AudioSource audioSource;
 
     // Start is called before the first frame update
@@ -42,7 +42,7 @@ public class Pause : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                audioSource.PlayOneShot(sound1);
+                audioSource.PlayOneShot(select);
                 Time.timeScale = 0;
                 isPose = true;
                 m_pause.SetActive(true);
@@ -53,7 +53,7 @@ public class Pause : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space) && isBack == false)
             {
-                audioSource.PlayOneShot(sound1);
+                audioSource.PlayOneShot(select);
                 if (textY == -50)
                 {
                     isBack = true;
@@ -65,7 +65,7 @@ public class Pause : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S))
             {
-                audioSource.PlayOneShot(sound2);
+                audioSource.PlayOneShot(move);
                 if (textY == -50)
                 {
                     textY = -230;

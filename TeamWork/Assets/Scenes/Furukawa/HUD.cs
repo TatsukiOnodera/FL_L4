@@ -17,14 +17,14 @@ public class HUD : MonoBehaviour
     private FeverTime m_feverTime;
 
     // ƒvƒŒƒCƒ„[‚ÌÅ‘åHP
-    public int m_maxHP = 0;
+    private int m_maxHP = 0;
 
     // HUD‚Ì‰¡•
-    public float m_width = 0;
+    private float m_width = 0;
 
-    public int nowHP = 0;
+    private int nowHP = 0;
 
-    public float nowFever = 0;
+    private float nowFever = 0;
 
     // Start is called before the first frame update
     void Start()

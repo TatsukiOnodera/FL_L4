@@ -7,7 +7,7 @@ using UnityEditor;
 /// <summary>
 /// Prefabを差し替えるウィンドウ
 /// </summary>
-public class ChangePrehub : EditorWindow
+public class ReplacingPrefabWindow : EditorWindow
 {
 
     //スクロール位置
@@ -30,7 +30,7 @@ public class ChangePrehub : EditorWindow
     [MenuItem("Tools/Open/ReplacingPrefabWindow")]
     public static void Open()
     {
-        ChangePrehub.GetWindow(typeof(ChangePrehub));
+        ReplacingPrefabWindow.GetWindow(typeof(ReplacingPrefabWindow));
     }
 
     private void OnEnable()
