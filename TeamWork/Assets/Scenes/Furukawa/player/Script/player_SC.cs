@@ -147,7 +147,7 @@ public class player_SC : MonoBehaviour
         }
 
         // —Ž‰º‚µ‚½‚Æ‚«
-        if (position.y < -5.5)
+        if (position.y < -10.0f)
         {
             GameObject obj = GameObject.Find("Scene");
             StageSceneChange scene = obj.GetComponent<StageSceneChange>();

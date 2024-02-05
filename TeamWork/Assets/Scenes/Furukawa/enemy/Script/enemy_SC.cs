@@ -112,6 +112,12 @@ public class enemy_SC : MonoBehaviour
         {
             jumpInterval++;
         }
+
+        // —Ž‰º‚µ‚½‚Æ‚«
+        if (transform.position.y < -10.0f)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     /// <summary>
