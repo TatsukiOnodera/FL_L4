@@ -343,7 +343,7 @@ MonoBehaviour:
   speed: 0.1
   jumpP: 2500
   maxJumpCount: 1
-  HP: 3
+  HP: 5
   dead_SE: {fileID: 8300000, guid: 5430bdb1fad04f64d8c35def6d20e46f, type: 3}
   damage_SE: {fileID: 8300000, guid: c4bd9c49d5b21a341940710fdded4fc3, type: 3}
   jump_SE: {fileID: 8300000, guid: 4405fc7b763f9784580f3dec355de74e, type: 3}
