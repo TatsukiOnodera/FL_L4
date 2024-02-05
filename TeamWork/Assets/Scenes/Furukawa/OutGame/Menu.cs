@@ -33,18 +33,7 @@ public class Menu : MonoBehaviour
         {
             audioSource.PlayOneShot(sound1);
 
-            if (textY == 25)
-            {
-                isSelect = true;
-            }
-            else if (textY == -50)
-            {
-                
-            }
-            else if (textY == -125)
-            {
-                
-            }
+            isSelect = true;
         }
 
         if (Input.GetKeyUp(KeyCode.W))

@@ -36,11 +36,11 @@ public class MenuChangeScene : MonoBehaviour
                 }
                 else if (m_menu.GetStageNum() == 2)
                 {
-                    
+                    SceneManager.LoadScene("stage2");
                 }
                 else if (m_menu.GetStageNum() == 3)
                 {
-                    
+                    SceneManager.LoadScene("stage3");
                 }
             }
         }
