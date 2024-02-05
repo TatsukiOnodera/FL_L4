@@ -23,7 +23,7 @@ public class Menu : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        textY = 25;
+        textY = 100;
     }
 
     // Update is called once per frame
@@ -40,27 +40,27 @@ public class Menu : MonoBehaviour
         {
             audioSource.PlayOneShot(sound2);
 
-            textY += 75;
+            textY += 200;
 
-            if (textY > 25)
+            if (textY > 100)
             {
-                textY = -125;
+                textY = -300;
             }
 
-            selectCursor.anchoredPosition = new Vector2(-100, textY);
+            selectCursor.anchoredPosition = new Vector2(-254, textY);
         }
         else if (Input.GetKeyUp(KeyCode.S))
         {
             audioSource.PlayOneShot(sound2);
 
-            textY -= 75;
+            textY -= 200;
 
-            if (textY < -125)
+            if (textY < -300)
             {
-                textY = 25;
+                textY = 100;
             }
 
-            selectCursor.anchoredPosition = new Vector2(-100, textY);
+            selectCursor.anchoredPosition = new Vector2(-254, textY);
         }
     }
 
@@ -71,15 +71,15 @@ public class Menu : MonoBehaviour
             return 0;
         }
 
-        if (textY == 25)
+        if (textY == 100)
         {
             return 1;
         }
-        else if (textY == -50)
+        else if (textY == -100)
         {
             return 2;
         }
-        else if (textY == -125)
+        else if (textY == -300)
         {
             return 3;
         }
